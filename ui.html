@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OKF RAG Chat</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, Arial, sans-serif; background: #FFFFFF; height: 100vh; display: flex; color: #393C41; font-size: 14px; font-weight: 400; line-height: 1.43; }
+  ::selection { background: #3E6AE1; color: #fff; }
+  #sidebar { width: 300px; background: #F4F4F4; display: flex; flex-direction: column; flex-shrink: 0; transition: all 0.33s; overflow: hidden; }
+  #sidebar h2 { font-size: 14px; font-weight: 500; color: #171A20; padding: 16px 16px 8px; letter-spacing: normal; text-transform: none; }
+  #file-list { flex: 1; overflow-y: auto; font-size: 13px; padding: 0 12px; }
+  .file-item { background: #FFFFFF; border-radius: 4px; margin: 4px 0; cursor: pointer; transition: background 0.33s; }
+  .file-item:hover { background: #EEEEEE; }
+  .file-header { padding: 10px 12px; display: flex; align-items: center; gap: 8px; }
+  .file-header .caret { transition: transform 0.33s; font-size: 10px; color: #5C5E62; width: 12px; text-align: center; }
+  .file-header .caret.open { transform: rotate(90deg); }
+  .file-header .name { font-weight: 500; color: #171A20; font-size: 14px; flex: 1; }
+  .file-header .meta { font-size: 11px; color: #5C5E62; }
+  .tree-container { padding: 0 8px 8px 8px; display: none; }
+  .tree-container.open { display: block; }
+  .tree-tabs { display: flex; gap: 4px; margin-bottom: 6px; padding: 0 4px; }
+  .tree-tab { padding: 4px 10px; font-size: 12px; font-weight: 500; border: none; border-radius: 4px; cursor: pointer; background: transparent; color: #5C5E62; transition: all 0.33s; }
+  .tree-tab.active { background: #3E6AE1; color: #FFFFFF; }
+  .tree-tab:hover:not(.active) { background: #D0D1D2; }
+  .gen-btn { padding: 6px 12px; font-size: 11px; font-weight: 500; border: 1px solid #D0D1D2; border-radius: 4px; cursor: pointer; background: #FFFFFF; color: #393C41; transition: all 0.33s; margin-left: auto; }
+  .gen-btn:hover { background: #EEEEEE; }
+  .gen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .tree-view { display: none; }
+  .tree-view.active { display: block; }
+  .tree-node { padding: 2px 0; }
+  .tree-node-row { display: flex; align-items: center; gap: 4px; padding: 3px 6px; border-radius: 4px; cursor: pointer; transition: background 0.33s; font-size: 12px; }
+  .tree-node-row:hover { background: #D0D1D2; }
+  .tree-node-row .caret { font-size: 8px; color: #8E8E8E; width: 10px; text-align: center; transition: transform 0.33s; }
+  .tree-node-row .caret.open { transform: rotate(90deg); }
+  .tree-node-row .label { color: #393C41; }
+  .tree-node-row.type-content { cursor: pointer; }
+  .tree-node-row.type-content .label { color: #5C5E62; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
+  .tree-children { padding-left: 14px; }
+  .upload-btn { display: block; width: calc(100% - 24px); margin: 8px 12px 0; padding: 10px; background: #FFFFFF; color: #393C41; border: none; border-radius: 4px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.33s, color 0.33s; }
+  .upload-btn:hover { background: #EEEEEE; }
+  #sidebar hr { border: none; border-top: 1px solid #D0D1D2; margin: 12px 12px; }
+  #sidebar label { font-size: 12px; color: #5C5E62; padding: 0 12px; display: block; margin-bottom: 4px; }
+  #model-select { width: calc(100% - 24px); margin: 0 12px; padding: 8px 12px; background: #FFFFFF; color: #171A20; border: 1px solid #D0D1D2; border-radius: 4px; font-size: 13px; font-family: -apple-system, Arial, sans-serif; outline: none; transition: border-color 0.33s; appearance: auto; }
+  #model-select:focus { border-color: #3E6AE1; }
+  #main { flex: 1; display: flex; flex-direction: column; min-width: 0; background: #FFFFFF; }
+  #main-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px 0; }
+  #main-header h1 { font-size: 14px; font-weight: 500; color: #171A20; }
+  #main-header .toggle-group { display: flex; gap: 4px; }
+  #table-toggle-btn { padding: 4px 12px; font-size: 12px; font-weight: 500; border: none; border-radius: 4px; cursor: pointer; background: transparent; color: #5C5E62; transition: all 0.33s; }
+  #table-toggle-btn.active { background: #3E6AE1; color: #FFFFFF; }
+  #table-toggle-btn:hover:not(.active) { background: #D0D1D2; }
+  #messages { flex: 1; overflow-y: auto; padding: 24px 32px; display: flex; flex-direction: column; gap: 8px; }
+  #table-view { flex: 1; overflow-y: auto; padding: 16px 24px; display: none; flex-direction: column; }
+  #table-view.show { display: flex; }
+  #table-view table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  #table-view th { text-align: left; font-weight: 500; color: #171A20; padding: 8px 12px; border-bottom: 1px solid #D0D1D2; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  #table-view td { padding: 8px 12px; border-bottom: 1px solid #EEEEEE; color: #393C41; vertical-align: top; }
+  #table-view tr:hover td { background: #F4F4F4; transition: background 0.33s; }
+  #table-view tr:active td { background: #EEEEEE; }
+  #table-view .data-preview { max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #5C5E62; }
+  #table-view .data-preview:hover { white-space: normal; overflow: visible; }
+  #table-view .filter-link { color: #3E6AE1; font-size: 11px; cursor: pointer; text-decoration: none; }
+  #table-view .filter-link:hover { text-decoration: underline; }
+  #table-view .empty { text-align: center; padding: 40px 0; color: #5C5E62; font-size: 13px; }
+  .msg { max-width: 70%; padding: 12px 16px; line-height: 1.5; font-size: 14px; animation: fadeIn 0.33s; border-radius: 4px; }
+  .msg.user { align-self: flex-end; background: #3E6AE1; color: #FFFFFF; }
+  .msg.assistant { align-self: flex-start; background: #F4F4F4; color: #393C41; }
+  .msg.system { align-self: center; background: transparent; color: #5C5E62; font-size: 12px; padding: 4px 12px; text-align: center; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  #input-area { display: flex; gap: 8px; padding: 16px 24px; background: #FFFFFF; border-top: 1px solid #EEEEEE; }
+  #input-area input { flex: 1; padding: 10px 16px; border: 1px solid #D0D1D2; border-radius: 4px; font-size: 14px; font-family: -apple-system, Arial, sans-serif; color: #171A20; outline: none; transition: border-color 0.33s; }
+  #input-area input::placeholder { color: #8E8E8E; }
+  #input-area input:focus { border-color: #3E6AE1; }
+  #input-area button { padding: 10px 24px; background: #3E6AE1; color: #FFFFFF; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 500; min-width: 80px; transition: background 0.33s; }
+  #input-area button:hover { background: #2D56C8; }
+  #input-area button:disabled { opacity: 0.5; cursor: not-allowed; }
+  #status { text-align: center; font-size: 12px; color: #5C5E62; padding: 4px; background: #F4F4F4; }
+</style>
+</head>
+<body>
+<div id="sidebar">
+  <h2>Documents</h2>
+  <div id="file-list">
+    <div style="color: #5C5E62; font-size: 12px; padding: 8px 12px;">No documents loaded yet.</div>
+  </div>
+  <input type="file" id="file-input" hidden multiple>
+  <button class="upload-btn" onclick="document.getElementById('file-input').click()">+ Upload Document</button>
+  <hr>
+  <label>Model</label>
+  <select id="model-select"></select>
+</div>
+<div id="main">
+  <div id="main-header">
+    <h1>OKF RAG Chat</h1>
+    <div class="toggle-group">
+      <button id="table-toggle-btn" onclick="toggleTableView()">Table</button>
+    </div>
+  </div>
+  <div id="messages">
+    <div class="msg system" style="padding: 20px 0;">Upload a document to begin. Click a document in the sidebar to see its knowledge tree.</div>
+  </div>
+  <div id="table-view"></div>
+  <div id="status"></div>
+  <div id="input-area">
+    <input type="text" id="chat-input" placeholder="Ask a question..." autofocus>
+    <button id="send-btn" onclick="sendMessage()">Send</button>
+  </div>
+</div>
+<script>
+const messagesEl = document.getElementById('messages');
+const chatInput = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-btn');
+const fileInput = document.getElementById('file-input');
+const fileListEl = document.getElementById('file-list');
+const statusEl = document.getElementById('status');
+let loadedDocs = [];
+let selectedModel = 'ornith:9b';
+let trees = {}; // filename → { structural: {...}, semantic: {...} }
+
+(async function loadModels() {
+  try {
+    const res = await fetch('/api/models');
+    const models = await res.json();
+    const sel = document.getElementById('model-select');
+    sel.innerHTML = models.map(m => `<option value="${m}" ${m === selectedModel ? 'selected' : ''}>${m}</option>`).join('');
+    sel.addEventListener('change', () => { selectedModel = sel.value; });
+  } catch {}
+})();
+
+fileInput.addEventListener('change', async () => {
+  for (const file of fileInput.files) {
+    const form = new FormData();
+    form.append('file', file);
+    statusEl.textContent = `Uploading ${file.name}...`;
+    try {
+      const res = await fetch('/api/upload', { method: 'POST', body: form });
+      const data = await res.json();
+      if (data.ok) {
+        loadedDocs.push({ state_id: data.first_state_id, filename: data.filename, rows: data.row_count });
+        renderFiles();
+        addMessage('system', `Loaded: ${data.filename} (${data.row_count} section${data.row_count > 1 ? 's' : ''})`);
+        statusEl.textContent = '';
+      } else {
+        statusEl.textContent = `Upload failed: ${data.error || 'unknown'}`;
+      }
+    } catch (e) {
+      statusEl.textContent = `Upload error: ${e.message}`;
+    }
+  }
+  fileInput.value = '';
+});
+
+function renderFiles() {
+  if (!loadedDocs.length) {
+    fileListEl.innerHTML = '<div style="color: #5C5E62; font-size: 12px; padding: 8px 12px;">No documents loaded yet.</div>';
+    return;
+  }
+  fileListEl.innerHTML = loadedDocs.map((d, idx) => `
+    <div class="file-item" data-idx="${idx}">
+      <div class="file-header" onclick="toggleDoc(${idx})">
+        <span class="caret" id="caret-${idx}">&#9654;</span>
+        <span class="name">${d.filename}</span>
+        <span class="meta">${d.rows || 1}</span>
+      </div>
+      <div class="tree-container" id="tree-${idx}">
+        <div class="tree-tabs">
+          <button class="tree-tab active" onclick="switchTreeTab(${idx},'structural',this)">&#128210; Structure</button>
+          <button class="tree-tab" onclick="switchTreeTab(${idx},'semantic',this)">&#129504; Semantic</button>
+          <button class="gen-btn" id="gen-${idx}" onclick="generateSemantic(${idx})" style="display:none">Generate</button>
+        </div>
+        <div class="tree-view active" id="tree-view-${idx}-structural"></div>
+        <div class="tree-view" id="tree-view-${idx}-semantic">
+          <div style="padding:8px;color:#5C5E62;font-size:12px;">Click Generate to create a semantic tree.</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  loadedDocs.forEach((d, idx) => preloadTree(idx));
+}
+
+async function preloadTree(idx) {
+  const doc = loadedDocs[idx];
+  const structuralEl = document.getElementById(`tree-view-${idx}-structural`);
+  if (!structuralEl) return;
+  structuralEl.innerHTML = '<div style="padding:8px;color:#5C5E62;font-size:12px;">Loading...</div>';
+  try {
+    const res = await fetch(`/api/knowledge-tree?file=${encodeURIComponent(doc.filename)}`);
+    const data = await res.json();
+    trees[doc.filename] = data;
+    structuralEl.innerHTML = '';
+    if (data.structural) renderTree(structuralEl, data.structural);
+    else structuralEl.innerHTML = '<div style="padding:8px;color:#5C5E62;font-size:12px;">No structure available</div>';
+    // Show generate button if no semantic tree
+    const genBtn = document.getElementById(`gen-${idx}`);
+    if (genBtn) genBtn.style.display = data.semantic ? 'none' : 'block';
+    if (data.semantic) {
+      const semanticEl = document.getElementById(`tree-view-${idx}-semantic`);
+      if (semanticEl) { semanticEl.innerHTML = ''; renderTree(semanticEl, data.semantic); }
+    }
+  } catch {
+    structuralEl.innerHTML = '<div style="padding:8px;color:#5C5E62;font-size:12px;">Failed to load tree</div>';
+  }
+}
+
+function toggleDoc(idx) {
+  const container = document.getElementById(`tree-${idx}`);
+  const caret = document.getElementById(`caret-${idx}`);
+  if (!container || !caret) return;
+  const isOpen = container.classList.toggle('open');
+  caret.classList.toggle('open', isOpen);
+  selectedDocIdx = idx;
+  if (showTableView && loadedDocs[idx]) {
+    loadTableData(loadedDocs[idx].filename);
+  }
+}
+
+function switchTreeTab(idx, mode, btn) {
+  const container = document.getElementById(`tree-${idx}`);
+  if (!container) return;
+  container.querySelectorAll('.tree-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  container.querySelectorAll('.tree-view').forEach(v => v.classList.remove('active'));
+  const view = document.getElementById(`tree-view-${idx}-${mode}`);
+  if (view) view.classList.add('active');
+  const genBtn = document.getElementById(`gen-${idx}`);
+  if (genBtn) genBtn.style.display = (mode === 'semantic' && !trees[loadedDocs[idx]?.filename]?.semantic) ? 'block' : 'none';
+}
+
+async function generateSemantic(idx) {
+  const doc = loadedDocs[idx];
+  const genBtn = document.getElementById(`gen-${idx}`);
+  if (!genBtn) return;
+  genBtn.disabled = true;
+  genBtn.textContent = 'Generating...';
+  const semanticEl = document.getElementById(`tree-view-${idx}-semantic`);
+  if (semanticEl) semanticEl.innerHTML = '<div style="padding:8px;color:#5C5E62;font-size:12px;">Generating tree from LLM...</div>';
+  try {
+    const res = await fetch('/api/knowledge-tree/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ file: doc.filename, model: selectedModel })
+    });
+    const data = await res.json();
+    if (!trees[doc.filename]) trees[doc.filename] = {};
+    trees[doc.filename].semantic = data.semantic;
+    if (semanticEl) { semanticEl.innerHTML = ''; renderTree(semanticEl, data.semantic); }
+    genBtn.style.display = 'none';
+  } catch (e) {
+    if (semanticEl) semanticEl.innerHTML = `<div style="padding:8px;color:#e74c3c;font-size:12px;">Error: ${e.message}</div>`;
+  }
+  genBtn.disabled = false;
+  genBtn.textContent = 'Generate';
+}
+
+function renderTree(container, treeNode) {
+  if (!treeNode || !treeNode.children || !treeNode.children.length) {
+    container.innerHTML = '<div style="padding:8px;color:#5C5E62;font-size:12px;">Empty</div>';
+    return;
+  }
+  treeNode.children.forEach(child => renderNode(container, child, 0, loadedDocs));
+}
+
+function renderNode(container, node, depth) {
+  const isHeading = node.type === 'heading' || (node.children && node.children.length > 0);
+  const div = document.createElement('div');
+  div.className = 'tree-node';
+  const row = document.createElement('div');
+  row.className = `tree-node-row ${isHeading ? 'type-heading' : 'type-content'}`;
+  if (isHeading) {
+    const caret = document.createElement('span');
+    caret.className = 'caret';
+    caret.textContent = '\u25B6';
+    row.appendChild(caret);
+  } else {
+    const dot = document.createElement('span');
+    dot.style.cssText = 'width:10px;text-align:center;font-size:8px;color:#8E8E8E;';
+    dot.textContent = '\u2022';
+    row.appendChild(dot);
+  }
+  const label = document.createElement('span');
+  label.className = 'label';
+  label.textContent = node.topic || node.label || '(unnamed)';
+  row.appendChild(label);
+  div.appendChild(row);
+  if (isHeading && node.children) {
+    const childrenDiv = document.createElement('div');
+    childrenDiv.className = 'tree-children';
+    childrenDiv.style.display = 'none';
+    row.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = childrenDiv.style.display !== 'none';
+      childrenDiv.style.display = isOpen ? 'none' : 'block';
+      const caret = row.querySelector('.caret');
+      if (caret) caret.classList.toggle('open', !isOpen);
+    });
+    node.children.forEach(child => renderNode(childrenDiv, child, depth + 1));
+    div.appendChild(childrenDiv);
+  }
+  // If content leaf, clicking pre-fills + sends
+  if (!isHeading || !node.children) {
+    row.addEventListener('click', () => onNodeClick(node, row));
+  }
+  container.appendChild(div);
+}
+
+function collectLeafIds(node) {
+  const ids = [];
+  if (node.state_ids && node.state_ids.length) ids.push(...node.state_ids);
+  if (node.children) node.children.forEach(c => ids.push(...collectLeafIds(c)));
+  // Deduplicate
+  return [...new Set(ids)];
+}
+
+function getFilenameForNode(node) {
+  // Walk up the file list to find which doc contains this node
+  for (let i = 0; i < loadedDocs.length; i++) {
+    const container = document.getElementById(`tree-${i}`);
+    if (container && container.contains(node)) return loadedDocs[i].filename;
+  }
+  return null;
+}
+
+function onNodeClick(node, rowEl) {
+  const topic = node.label || '';
+  chatInput.value = `Tell me about ${topic}`;
+  // Collect state_ids from this branch
+  const ids = collectLeafIds(node);
+  // Send with filter_ids
+  sendMessageWithFilter(ids);
+}
+
+async function sendMessageWithFilter(filterIds) {
+  const text = chatInput.value.trim();
+  if (!text) return;
+  const msg = text;
+  chatInput.value = '';
+  addMessage('user', msg);
+  sendBtn.disabled = true;
+  statusEl.textContent = 'Thinking...';
+  const assistantDiv = document.createElement('div');
+  assistantDiv.className = 'msg assistant';
+  messagesEl.appendChild(assistantDiv);
+  try {
+    const body = { message: msg, model: selectedModel };
+    if (filterIds && filterIds.length) body.filter_ids = filterIds;
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+      for (const line of lines) {
+        const m = line.match(/^data: (.+)$/);
+        if (!m) continue;
+        const payload = m[1].trim();
+        if (payload === '[DONE]') break;
+        try {
+          const j = JSON.parse(payload);
+          if (j.content) {
+            assistantDiv.textContent += j.content;
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+          }
+        } catch {}
+      }
+    }
+  } catch (e) {
+    assistantDiv.textContent = `Error: ${e.message}`;
+  }
+  sendBtn.disabled = false;
+  statusEl.textContent = '';
+}
+
+function addMessage(role, text) {
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  div.textContent = text;
+  messagesEl.appendChild(div);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+async function sendMessage() {
+  await sendMessageWithFilter(null);
+}
+
+// ---- OKF Table View
+let showTableView = false;
+let selectedDocIdx = null;
+
+function toggleTableView() {
+  showTableView = !showTableView;
+  const btn = document.getElementById('table-toggle-btn');
+  const messagesEl = document.getElementById('messages');
+  const tableView = document.getElementById('table-view');
+  if (!btn || !messagesEl || !tableView) return;
+  btn.classList.toggle('active', showTableView);
+  messagesEl.style.display = showTableView ? 'none' : 'flex';
+  tableView.classList.toggle('show', showTableView);
+  if (showTableView) {
+    if (selectedDocIdx !== null && loadedDocs[selectedDocIdx]) {
+      loadTableData(loadedDocs[selectedDocIdx].filename);
+    } else {
+      tableView.innerHTML = '<div class="empty">Select a document from the sidebar to view its rows.</div>';
+    }
+  }
+}
+
+async function loadTableData(filename) {
+  const tableView = document.getElementById('table-view');
+  if (!tableView) return;
+  tableView.innerHTML = '<div style="padding:24px;color:#5C5E62;font-size:13px;text-align:center;">Loading...</div>';
+  try {
+    const res = await fetch(`/api/kb-table?file=${encodeURIComponent(filename)}`);
+    const data = await res.json();
+    if (!data.rows || !data.rows.length) {
+      tableView.innerHTML = '<div class="empty">No KB rows found for this document.</div>';
+      return;
+    }
+    renderTableView(data.rows);
+  } catch {
+    tableView.innerHTML = '<div class="empty">Failed to load table data.</div>';
+  }
+}
+
+function renderTableView(rows) {
+  const tableView = document.getElementById('table-view');
+  if (!tableView) return;
+  let html = `<table>
+    <thead><tr>
+      <th>ID</th>
+      <th>Pattern</th>
+      <th>Role</th>
+      <th>Section</th>
+      <th>Data</th>
+      <th></th>
+    </tr></thead>
+    <tbody>`;
+  rows.forEach(r => {
+    const label = r.state_pattern || '';
+    const preview = (r.data_preview || '').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    html += `<tr>
+      <td style="color:#5C5E62;font-size:11px;">${r.state_id}</td>
+      <td>${r.state_pattern}</td>
+      <td>${r.role_behavior}</td>
+      <td style="color:#5C5E62;">${r.section_index}</td>
+      <td><span class="data-preview" title="${preview}">${preview}</span></td>
+      <td><span class="filter-link" onclick="filterRow('${r.state_id}')">Filter</span></td>
+    </tr>`;
+  });
+  html += `</tbody></table>`;
+  tableView.innerHTML = html;
+}
+
+function filterRow(stateId) {
+  chatInput.value = `Tell me about section ${stateId}`;
+  if (showTableView) toggleTableView();
+  sendMessageWithFilter([stateId]);
+}
+
+chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+</script>
+</body>
+</html>

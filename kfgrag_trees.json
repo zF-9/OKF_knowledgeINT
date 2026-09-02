@@ -1,0 +1,3537 @@
+{
+  "DataEngineeringWithPython.pdf": {
+    "structural": {
+      "label": "DataEngineeringWithPython.pdf",
+      "type": "root",
+      "children": []
+    },
+    "semantic": {
+      "label": "DataEngineeringWithPython.pdf",
+      "type": "root",
+      "children": [
+        {
+          "topic": "PDF Extraction Issues",
+          "summary": "During a PDF extraction process, several errors were encountered including syntax and command line issues.",
+          "state_ids": [
+            "1"
+          ]
+        },
+        {
+          "topic": "Syntax Error - Trailer Dictionary Issue",
+          "summary": "The extracted text contained an error related to the inability to find or properly locate the trailer dictionary within the PDF file.",
+          "children": [
+            {
+              "subtopic": "Invalid XRef Entry 3027",
+              "state_ids": [
+                "1"
+              ]
+            },
+            {
+              "subtopic": "Invalid XRef Entry 2939",
+              "state_ids": [
+                "1"
+              ]
+            }
+          ]
+        },
+        {
+          "topic": "Syntax Error - Page Object Issue",
+          "summary": "The PDF's top-level pages object was identified as having an incorrect type, which is null.",
+          "children": [],
+          "state_ids": [
+            "1"
+          ]
+        },
+        {
+          "topic": "Command Line Error",
+          "summary": "An error occurred due to the improper page range provided in the command line argument, with the first page being specified before the last page.",
+          "state_ids": [
+            "1"
+          ]
+        }
+      ]
+    },
+    "semantic_generated_at": "2026-07-30T03:27:32.853Z"
+  },
+  "MachineLearningBasics.pdf": {
+    "structural": {
+      "label": "MachineLearningBasics.pdf",
+      "type": "root",
+      "children": [
+        {
+          "label": "12/06/2017, 14:07",
+          "type": "heading",
+          "children": [
+            {
+              "label": "Chapter 5",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Mac",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Machine hine Learning Basics  Deep learning is a speciﬁc kind of machine learnin",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "an optimization algorithm, a cost function, a model, and a dataset to build a ma",
+                          "type": "content",
+                          "state_ids": [
+                            "6"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Learning Algorithms",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "A machine learning algorithm is an algorithm that is able to learn from data. Bu",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "The Task, T",
+                  "type": "heading",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "label": "Learning",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Machine                Algorithms learning allows  us to tackle tasks that are t",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "Thelearning",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Machine  Task, tasks are usually described in terms of how the machine learning ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "Many kinds of tasks can be solved with machine learning. Some of the most common",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "11",
+                            "14",
+                            "20",
+                            "23",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "• Regression: In this type of task, the computer program is asked to predict a n",
+                              "type": "content",
+                              "state_ids": [
+                                "16"
+                              ]
+                            },
+                            {
+                              "label": "101",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                                  "type": "content",
+                                  "state_ids": [
+                                    "4",
+                                    "9",
+                                    "14",
+                                    "20",
+                                    "23",
+                                    "35",
+                                    "39",
+                                    "43",
+                                    "50"
+                                  ]
+                                },
+                                {
+                                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                                  "type": "heading",
+                                  "children": [
+                                    {
+                                      "label": "example, deep learning can be used to annotate the locations of roads in aerial ",
+                                      "type": "content",
+                                      "state_ids": [
+                                        "4",
+                                        "9",
+                                        "14",
+                                        "20",
+                                        "22",
+                                        "23",
+                                        "39",
+                                        "43",
+                                        "50"
+                                      ]
+                                    },
+                                    {
+                                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                                      "type": "heading",
+                                      "children": [
+                                        {
+                                          "label": "• Denoising: In this type of task, the machine learning algorithm is given in in",
+                                          "type": "content",
+                                          "state_ids": [
+                                            "25"
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "The Performance Measure, P",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "In order to evaluate the abilities of a machine learning algorithm, we must desi",
+                      "type": "content",
+                      "state_ids": [
+                        "29"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "P",
+          "type": "heading",
+          "children": [
+            {
+              "label": "The Performance Measure,",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "35",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "also obtain equivalent information by measuring the error rate , the proportion ",
+                      "type": "content",
+                      "state_ids": [
+                        "32"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "The Exp",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Experience, erience, E  Machine learning algorithms can be broadly categorized a",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            },
+            {
+              "label": "The Experience,",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "35",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "deﬁned in section 5.1.1. Sometimes we will also call examples data points. One o",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "37",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "can solve the supervised learning problem of learning p(y | x) by using traditio",
+                          "type": "content",
+                          "state_ids": [
+                            "41"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "examples with four features for each example. This means we can represent",
+          "type": "heading",
+          "children": [
+            {
+              "label": "the dataset with a design matrix X ∈ R150×4 , where Xi,1 is the sepal length of ",
+              "type": "content",
+              "state_ids": [
+                "4",
+                "9",
+                "14",
+                "20",
+                "23",
+                "39",
+                "43",
+                "50"
+              ]
+            },
+            {
+              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "types of such heterogeneous data. In cases like these, rather than describing th",
+                  "type": "content",
+                  "state_ids": [
+                    "45"
+                  ]
+                },
+                {
+                  "label": "Example: Linear Regression",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Our deﬁnition of a machine learning algorithm as an algorithm that is capable of",
+                      "type": "content",
+                      "state_ids": [
+                        "47"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Example:         on. We Regression",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "deﬁne the output to be",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "ŷ = w  x                              ...",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "where w ∈ Rn is a vector of parameters. Parameters are values that control the b",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "then increasing the value of that feature increases the value of our prediction ",
+                              "type": "content",
+                              "state_ids": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": " (test)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "MSEtest =      ( ŷ    − y (test)) 2i .                (5.4) m i  Intuitively, o",
+              "type": "content",
+              "state_ids": []
+            },
+            {
+              "label": "∇wMSEtrain = 0                          ...",
+              "type": "heading",
+              "children": []
+            }
+          ]
+        },
+        {
+          "label": "(train)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "⇒ ∇w       ||ŷ    − y (train) || 22 = 0          (5.7) m 1 ⇒     ∇w ||X(train)w",
+              "type": "content",
+              "state_ids": [
+                "4",
+                "9",
+                "14",
+                "20",
+                "23",
+                "39",
+                "43",
+                "50"
+              ]
+            },
+            {
+              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Linear regression example                           Optimization of w",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "0.55",
+          "type": "heading",
+          "children": []
+        },
+        {
+          "label": "0.50",
+          "type": "heading",
+          "children": [
+            {
+              "label": "MSE(train)",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "0.35",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "−1 0.30 −2                                                 0.25 −3              ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "b, one can continue to use the model with only weights but augment x with an ext",
+                          "type": "content",
+                          "state_ids": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Capacit",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Capacity y, Ov Overﬁtting erﬁtting and Underﬁtting The central challenge in mach",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            },
+            {
+              "label": "Capacity, Overﬁtting and Underﬁtting",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "from the training set. In our linear regression example, we trained the model by",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "(test)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "but we actually care about the test error, m(test ) ||X       w − y (test) ||22.",
+              "type": "content",
+              "state_ids": [
+                "4",
+                "9",
+                "14",
+                "20",
+                "23",
+                "39",
+                "43",
+                "50"
+              ]
+            },
+            {
+              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "training set? The ﬁeld of statistical learning theory provides some answers. If ",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Make the training error small.",
+          "type": "heading",
+          "children": []
+        },
+        {
+          "label": "Make the gap between training and test error small.",
+          "type": "heading",
+          "children": [
+            {
+              "label": "These two factors correspond to the two central challenges in machine learning: ",
+              "type": "content",
+              "state_ids": [
+                "4",
+                "9",
+                "14",
+                "20",
+                "23",
+                "39",
+                "43",
+                "50"
+              ]
+            },
+            {
+              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "functions. Models with low capacity may struggle to ﬁt the training set. Models ",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "ŷ = b + wx.                           (...",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "By introducing x2 as another feature provided to the linear regression model, we",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "ŷ = b + w 1 x + w2x2 .                 ...",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "Though this model implements a quadratic function of its input, the output is st",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "have more parameters than training examples. We have little chance of choosing a",
+                              "type": "content",
+                              "state_ids": []
+                            },
+                            {
+                              "label": "                                    ...",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "Figure 5.2: We ﬁt three models to this example training set. The training data w",
+                                  "type": "content",
+                                  "state_ids": []
+                                },
+                                {
+                                  "label": "113",
+                                  "type": "heading",
+                                  "children": [
+                                    {
+                                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                                      "type": "content",
+                                      "state_ids": [
+                                        "4",
+                                        "9",
+                                        "14",
+                                        "20",
+                                        "23",
+                                        "35",
+                                        "39",
+                                        "43",
+                                        "50"
+                                      ]
+                                    },
+                                    {
+                                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                                      "type": "heading",
+                                      "children": [
+                                        {
+                                          "label": "the imperfection of the optimization algorithm, mean that the learning algorithm",
+                                          "type": "content",
+                                          "state_ids": []
+                                        },
+                                        {
+                                          "label": "114",
+                                          "type": "heading",
+                                          "children": [
+                                            {
+                                              "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                                              "type": "content",
+                                              "state_ids": [
+                                                "4",
+                                                "9",
+                                                "14",
+                                                "20",
+                                                "23",
+                                                "35",
+                                                "39",
+                                                "43",
+                                                "50"
+                                              ]
+                                            },
+                                            {
+                                              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                                              "type": "heading",
+                                              "children": [
+                                                {
+                                                  "label": "Training error",
+                                                  "type": "heading",
+                                                  "children": [
+                                                    {
+                                                      "label": "Underﬁtting zone Overﬁtting zone Generalization error Error",
+                                                      "type": "content",
+                                                      "state_ids": []
+                                                    },
+                                                    {
+                                                      "label": "Generalization gap",
+                                                      "type": "heading",
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Optimal Capacity",
+          "type": "heading",
+          "children": [
+            {
+              "label": "Capacity   Figure 5.3: Typical relationship between capacity and error. Training",
+              "type": "content",
+              "state_ids": [
+                "4",
+                "9",
+                "14",
+                "20",
+                "23",
+                "39",
+                "43",
+                "50"
+              ]
+            },
+            {
+              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "parametric learning algorithm inside another algorithm that increases the number",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "The No Free Lunc",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Lunch h Theorem  Learning theory claims that a machine learning algorithm can ge",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                },
+                {
+                  "label": "The NoforFree",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "lunch theorem            Lunc machine    h Theorem learning (Wolpert, 1996) stat",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "116",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "35",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "    ",
+                                  "type": "content",
+                                  "state_ids": []
+                                },
+                                {
+                                  "label": "",
+                                  "type": "heading",
+                                  "children": [
+                                    {
+                                      "label": "                ",
+                                      "type": "content",
+                                      "state_ids": [
+                                        "4",
+                                        "9",
+                                        "14",
+                                        "20",
+                                        "23",
+                                        "39",
+                                        "43",
+                                        "50"
+                                      ]
+                                    },
+                                    {
+                                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                                      "type": "heading",
+                                      "children": [
+                                        {
+                                          "label": "performance (over all possible tasks) as merely predicting that every point belo",
+                                          "type": "content",
+                                          "state_ids": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Regularization",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "The no free lunch theorem implies that we must design our machine learning algor",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                },
+                {
+                  "label": "Regularization",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "The behavior of our algorithm is strongly aﬀected not just by how large we make ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "data signiﬁcantly better than the preferred solution. For example, we can modify",
+                          "type": "content",
+                          "state_ids": []
+                        },
+                        {
+                          "label": "                                    ...",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "Figure 5.5: We ﬁt a high-degree polynomial regression model to our example train",
+                              "type": "content",
+                              "state_ids": []
+                            },
+                            {
+                              "label": "119",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                                  "type": "content",
+                                  "state_ids": [
+                                    "4",
+                                    "9",
+                                    "14",
+                                    "20",
+                                    "23",
+                                    "35",
+                                    "39",
+                                    "43",
+                                    "50"
+                                  ]
+                                },
+                                {
+                                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                                  "type": "heading",
+                                  "children": [
+                                    {
+                                      "label": "More generally, we can regularize a model that learns a function f(x; θ) by addi",
+                                      "type": "content",
+                                      "state_ids": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Hyp",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Hyperparameters erparameters and Validation Sets Most machine learning algorithm",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "120",
+                  "type": "heading",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "label": "Hyperparameters and Validation Sets",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "35",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "setting must be a hyperparameter because it is not appropriate to learn that hyp",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "121",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "35",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Cross-V",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Cross-Validation alidation  Dividing the dataset into a ﬁxed training set and a ",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                },
+                {
+                  "label": "shown in",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Cross-V     algorithm 5.1, in which a partition of the dataset is formed by alid",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Estimators, Bias and Variance",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "The ﬁeld of statistics gives us many tools that can be used to achieve the machi",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "Poin",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "ointt Estimation  Point estimation is the attempt to provide the single “best” p",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Estimators, Bias and Variance",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Let {x(1) , . . . , x(m) } be a set of m independent and identically distributed",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "122",
+                  "type": "heading",
+                  "children": []
+                },
+                {
+                  "label": "Point Estimation",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "35",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "Algorithm 5.1 The k -fold cross-validation algorithm. It can be used to estimate",
+                          "type": "content",
+                          "state_ids": []
+                        },
+                        {
+                          "label": "123",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                              "type": "content",
+                              "state_ids": [
+                                "4",
+                                "9",
+                                "14",
+                                "20",
+                                "23",
+                                "35",
+                                "39",
+                                "43",
+                                "50"
+                              ]
+                            },
+                            {
+                              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "(i.i.d.) data points. A point estimator or statistic is any function of the data",
+                                  "type": "content",
+                                  "state_ids": []
+                                },
+                                {
+                                  "label": "θ̂m = g(x(1) , . . . , x(m) ).          ...",
+                                  "type": "heading",
+                                  "children": [
+                                    {
+                                      "label": "The deﬁnition does not require that g return a value that is close to the true θ",
+                                      "type": "content",
+                                      "state_ids": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Bias",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "The bias of an estimator is deﬁned as:",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "bias(θ̂m ) = E( θ̂m ) − θ               ...",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "124",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                                  "type": "content",
+                                  "state_ids": [
+                                    "4",
+                                    "9",
+                                    "14",
+                                    "20",
+                                    "23",
+                                    "35",
+                                    "39",
+                                    "43",
+                                    "50"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Bias",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "where the expectation is over the data (seen as samples from a random variable) ",
+                          "type": "content",
+                          "state_ids": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": " (i)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "θ̂m =       x .                            (5.22) m i=1 To determine whether thi",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": " (i)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "=E             x   −θ                                (5.24) m i=1",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "  (i) ",
+          "type": "heading",
+          "children": [
+            {
+              "label": "m =         E x   −θ                                 (5.25) m i=1",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "   (i) x (i)              ",
+          "type": "heading",
+          "children": [
+            {
+              "label": "m    1 (1−x(i) ) =           x θ (1 − θ)            −θ              (5.26) m i=1",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "",
+          "type": "heading",
+          "children": [
+            {
+              "label": "=           (θ) − θ                                (5.27) m i=1 =θ−θ =0         ",
+              "type": "content",
+              "state_ids": []
+            },
+            {
+              "label": "Since bias( ˆ",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "θ) = 0, we say that our estimator θˆ is unbiased.  Example: Gaussian Distributio",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "125",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "35",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "Recall that the Gaussian probability density function is given by              ",
+                          "type": "content",
+                          "state_ids": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "1 (x",
+          "type": "heading",
+          "children": [
+            {
+              "label": "p(x(i); µ, σ 2 ) = √      exp −                 .          (5.29) 2πσ2       2  ",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": " (i)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "µ̂m =       x                            (5.30) m i=1 To determine the bias of t",
+              "type": "content",
+              "state_ids": []
+            },
+            {
+              "label": "µm] − µ",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "bias(µ̂ m ) = E[ˆ                        (5.31)     m ",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": " (i)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "=E          x     −µ          (5.32) m i=1                  ",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "m        ",
+          "type": "heading",
+          "children": [
+            {
+              "label": "=          E x(i)     −µ      (5.33) m i=1      m ",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "",
+          "type": "heading",
+          "children": [
+            {
+              "label": "=          µ −µ               (5.34) m i=1 =µ−µ=0                        (5.35) ",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "  (i)     2",
+          "type": "heading",
+          "children": [
+            {
+              "label": "m σ̂2m =         x − µ̂ m ,              (5.36) m i=1  where µ̂m is the sample m",
+              "type": "content",
+              "state_ids": []
+            },
+            {
+              "label": "126",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "35",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "2 We begin by evaluating the term E[σ̂ m ]:      m  ",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "             2",
+          "type": "heading",
+          "children": [
+            {
+              "label": "2 E[σ̂m ] =E          x(i) − µ̂m                        (5.38) m i=1 m−1 2 =    ",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "  (i)    2",
+          "type": "heading",
+          "children": [
+            {
+              "label": "m σ̃ 2m =         x − µ̂m                    (5.40) m−1 i=1  provides an alterna",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "  (i)        2",
+          "type": "heading",
+          "children": [
+            {
+              "label": "m 2 E[σ̃ m] = E             x − µ̂m                     (5.41) m−1 i=1 m =      ",
+              "type": "content",
+              "state_ids": []
+            },
+            {
+              "label": "Variance and Standard Error",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Another property of the estimator that we might want to consider is how much we ",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            },
+            {
+              "label": "Variance and Standard Error",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "35",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "The variance or the standard error of an estimator provides a measure of how we ",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "128",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "35",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "Example: Bernoulli Distribution We once again consider a set of samples {x(1) , ",
+                              "type": "content",
+                              "state_ids": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "m     (i)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "the variance of the estimator θ̂m = m       i=1 x .                         ",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "",
+          "type": "heading",
+          "children": [
+            {
+              "label": "m      =          Var  x(i)                 (5.49) m2 i=1 m",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "",
+          "type": "heading",
+          "children": [
+            {
+              "label": "=          θ(1 − θ)                  (5.50) m2 i=1 1 =   mθ(1 − θ)              ",
+              "type": "content",
+              "state_ids": []
+            },
+            {
+              "label": "Trading oﬀ Bias and Variance to Minimize Mean Squared",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Error  Bias and variance measure two diﬀerent sources of error in an estimator. ",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            },
+            {
+              "label": "Trading",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "The most         oﬀ Bias common   way toand    Variance negotiate       to Minim",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "The MSE measures the overall expected deviation—in a squared error sense— betwee",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "Underﬁtting zone              Overﬁtting...",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "Bias                                  Generalization error             Variance",
+                          "type": "content",
+                          "state_ids": []
+                        },
+                        {
+                          "label": "Optimal                       Capacity",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "capacity   Figure 5.6: As capacity increases (x-axis), bias (dotted) tends to de",
+                              "type": "content",
+                              "state_ids": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Consistency",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "So far we have discussed the properties of various estimators for a training set",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "130",
+                  "type": "heading",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "label": "Consistency",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "35",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "value of the corresponding parameters. More formally, we would like that plimm→∞",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Maxim",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Maximum um Lik Likeliho eliho elihoood Estimation Previously, we have seen some ",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            },
+            {
+              "label": "Maximum Likelihood Estimation",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "θ = arg max p  (X; θ)                                        (5.56) ML          ",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "This product over many probabilities can be inconvenient for a variety of reason",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "are diﬀerent. In software, we often phrase both as minimizing a cost function. M",
+                          "type": "content",
+                          "state_ids": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Conditional Log-Lik",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Log-Likeliho eliho elihoood and Mean Squared Error  The maximum likelihood estim",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "θ ML = arg max P (Y | X ; θ ).          ...",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "θ  If the examples are assumed to be i.i.d., then this can be decomposed into m ",
+                          "type": "content",
+                          "state_ids": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "θML",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Conditional  = arg max Log-Lik elihoolog P (y(Mean d and i) | x (i); Squared θ).",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "examples are assumed to be i.i.d., the conditional log-likelihood (equation 5.63",
+                          "type": "content",
+                          "state_ids": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "i=1",
+          "type": "heading",
+          "children": [
+            {
+              "label": "2σ  where ŷ (i) is the output of the linear regression on the i-th input x(i) a",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": " (i)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "MSEtrain =           ||ŷ − y (i) ||2 ,               (5.66) m i=1 we immediatel",
+              "type": "content",
+              "state_ids": []
+            },
+            {
+              "label": "Prop",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Properties erties of Maxim Maximum um Likelihoo Likelihoodd  The main appeal of ",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "consistent estimators can diﬀer in their statistic eﬃciency , meaning that one c",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Ba",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Bay yesian Statistics So far we have discussed frequentist statistics and approa",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            },
+            {
+              "label": "Bayesian  distribution,  p(θ ) (sometimes referred to as simply “the prior”).",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Statistics Generally, the machine learning practitioner selects a prior distribu",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "135",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "35",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "value of θ before observing any data. For example, one might assume a priori tha",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "prior distribution. The prior has an inﬂuence by shifting probability mass densi",
+                              "type": "content",
+                              "state_ids": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "(train)         (train)    (train)    (train)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "∝ exp − (y              −X           w) (y       −X         w) , 2 (5.72)  where",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "(w − µ 0) ,                      (5.73)",
+          "type": "heading",
+          "children": [
+            {
+              "label": "2  137                         http://www.deeplearningbook.org/contents/ml.htm",
+              "type": "content",
+              "state_ids": [
+                "4",
+                "9",
+                "14",
+                "20",
+                "23",
+                "39",
+                "43",
+                "50"
+              ]
+            },
+            {
+              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "where µ0 and Λ 0 are the prior distribution mean vector and covariance matrix re",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "                    1          −1",
+          "type": "heading",
+          "children": [
+            {
+              "label": "∝ exp − (y − Xw) (y − Xw) exp − (w − µ0 ) Λ 0 (w − µ 0 )",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "type": "heading",
+          "children": [
+            {
+              "label": "(5.75)                                                    ",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "                    −1          −1",
+          "type": "heading",
+          "children": [
+            {
+              "label": "∝ exp −      −2y Xw + w X Xw + w Λ0 w − 2µ0 Λ 0 w              . 2 (5.76)      ",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": " −1              1  −1",
+          "type": "heading",
+          "children": [
+            {
+              "label": "p(w | X , y) ∝ exp − (w − µm ) Λm (w − µ m) + µ mΛm µ m           (5.77)",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "type": "heading",
+          "children": [
+            {
+              "label": "                          ",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": " −1",
+          "type": "heading",
+          "children": [
+            {
+              "label": "∝ exp − (w − µm ) Λm (w − µ m) .                     (5.78) 2 All terms that do ",
+              "type": "content",
+              "state_ids": []
+            },
+            {
+              "label": "Maxim",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Maximum um A Posteriori (MAP) Estimation  While the most principled approach is ",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "A Posteriori",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "35",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Maximum                              (MAP) Estimation",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "single point estimate. One common reason for desiring a point estimate is that m",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "139",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "35",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Sup",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Supervised ervised Learning Algorithms Recall from section 5.1.3 that supervised",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "Probabilistic Sup",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Supervised ervised Learning  Most supervised learning algorithms in this book ar",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                },
+                {
+                  "label": "Probabilistic",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "probability                Supervised of class 1 determines         Learning the",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "This same strategy can be applied to essentially any supervised learning problem",
+                          "type": "content",
+                          "state_ids": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Supp",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Support ort Vector Mac Machines hines  One of the most inﬂuential approaches to ",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                },
+                {
+                  "label": "shownort",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "that  the linear Vector    Mac function hines used by the support vector machine",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "guaranteed to converge eﬃciently. This is possible because we consider φ ﬁxed an",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "as support vectors. Kernel machines also suﬀer from a high computational cost of",
+                              "type": "content",
+                              "state_ids": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Other Simple Sup",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Supervised ervised Learning Algorithms  We have already brieﬂy encountered anoth",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                },
+                {
+                  "label": "Other Simple Sup ervised Learning Algorithms",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "the case of classiﬁcation, we can average over one-hot code vectors c with cy = ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "distribution, but only a single variable x1 is relevant to the output. Suppose f",
+                          "type": "content",
+                          "state_ids": []
+                        },
+                        {
+                          "label": "144",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                              "type": "content",
+                              "state_ids": [
+                                "4",
+                                "9",
+                                "14",
+                                "20",
+                                "23",
+                                "35",
+                                "39",
+                                "43",
+                                "50"
+                              ]
+                            },
+                            {
+                              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                              "type": "heading",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "1",
+          "type": "heading",
+          "children": []
+        },
+        {
+          "label": "01                                           11",
+          "type": "heading",
+          "children": []
+        },
+        {
+          "label": "011                    110               111",
+          "type": "heading",
+          "children": []
+        },
+        {
+          "label": "1111",
+          "type": "heading",
+          "children": [
+            {
+              "label": "010",
+              "type": "heading",
+              "children": []
+            }
+          ]
+        },
+        {
+          "label": "01",
+          "type": "heading",
+          "children": []
+        },
+        {
+          "label": "110",
+          "type": "heading",
+          "children": []
+        },
+        {
+          "label": "111          1111",
+          "type": "heading",
+          "children": [
+            {
+              "label": "Figure 5.7: Diagrams describing how a decision tree works. (Top)Each node of the",
+              "type": "content",
+              "state_ids": [
+                "4",
+                "9",
+                "14",
+                "20",
+                "23",
+                "39",
+                "43",
+                "50"
+              ]
+            },
+            {
+              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Another type of learning algorithm that also breaks the input space into regions",
+                  "type": "content",
+                  "state_ids": []
+                }
+              ]
+            },
+            {
+              "label": "Unsup",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Unsupervised ervised Learning Algorithms Recall from section 5.1.3 that unsuperv",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "146",
+                  "type": "heading",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "label": "Unsupervised Learning Algorithms",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "35",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "related examples. A classic unsupervised learning task is to ﬁnd the “best” repr",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                },
+                {
+                  "label": "Principal Comp",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Componen onen onents ts Analysis  In section 2.12, we saw that the principal com",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "147",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "35",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Principal Components Analysis",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "20",
+          "type": "heading",
+          "children": []
+        },
+        {
+          "label": "10",
+          "type": "heading",
+          "children": []
+        },
+        {
+          "label": "0",
+          "type": "heading",
+          "children": [
+            {
+              "label": "z2 −10                                    −10",
+              "type": "content",
+              "state_ids": []
+            },
+            {
+              "label": "−20                                    −...",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "−20 −10   0      10   20               −20 −10   0    10   20 x1                ",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "PCA ﬁnds a representation (through linear transformation) z = xW where Var[z ] ",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "X  X = W ΛW  .                      (5...",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "In this section, we exploit an alternative derivation of the principal component",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "The above analysis shows that when we project the data x to z, via the linear tr",
+                              "type": "content",
+                              "state_ids": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "k-means Clustering",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Another example of a simple representation learning algorithm is k -means cluste",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                },
+                {
+                  "label": "example",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "-means         of sparse representations that lose many of the beneﬁts Clusterin",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "150",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "35",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "One diﬃculty pertaining to clustering is that the clustering problem is inherent",
+                              "type": "content",
+                              "state_ids": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Sto",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Stocchastic Gradien Gradientt Descen Descentt Nearly all of deep learning is pow",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "151",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "35",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "gradient descent algorithm introduced in section 4.3. A recurring problem in mac",
+                          "type": "content",
+                          "state_ids": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "",
+          "type": "heading",
+          "children": [
+            {
+              "label": "J(θ) = Ex,y∼p̂data L(x, y, θ) =     L(x(i) , y(i), θ)    (5.96) m i=1  where L i",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "",
+          "type": "heading",
+          "children": [
+            {
+              "label": "∇θ J(θ) =       ∇θ L(x(i) , y (i), θ).       (5.97) m i=1  The computational cos",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "to a few hundred. Crucially, m is usually held ﬁxed as the training set size m",
+          "type": "heading",
+          "children": [
+            {
+              "label": "grows. We may ﬁt a training set with billions of examples using updates computed",
+              "type": "content",
+              "state_ids": []
+            }
+          ]
+        },
+        {
+          "label": "",
+          "type": "heading",
+          "children": [
+            {
+              "label": "g =  ∇θ     L(x(i) , y(i) , θ).          (5.98) m     i=1  using examples from ",
+              "type": "content",
+              "state_ids": []
+            },
+            {
+              "label": "θ ← θ − g,                      (5.99)",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "where  is the learning rate. 152     http://www.deeplearningbook.org/contents/m",
+                  "type": "content",
+                  "state_ids": [
+                    "4",
+                    "9",
+                    "14",
+                    "20",
+                    "23",
+                    "39",
+                    "43",
+                    "50"
+                  ]
+                },
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Gradient descent in general has often been regarded as slow or unreliable. In th",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Building a Mac",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Machine hine Learning Algorithm Nearly all deep learning algorithms can be descr",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "153",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "35",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Building a Machine Learning Algorithm",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "X and y, the cost function",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "J (w, b) = −Ex,y∼p̂data log pmodel (y | x),   (5.100)  the model speciﬁcation p ",
+                          "type": "content",
+                          "state_ids": []
+                        },
+                        {
+                          "label": "J(w) = Ex∼p̂data ||x − r(x; w )||22     ...",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "while our model is deﬁned to have w with norm one and reconstruction function r(",
+                              "type": "content",
+                              "state_ids": [
+                                "4",
+                                "9",
+                                "14",
+                                "20",
+                                "23",
+                                "39",
+                                "43",
+                                "50"
+                              ]
+                            },
+                            {
+                              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "hand-designed, it can usually be understood as using a special-case optimizer. S",
+                                  "type": "content",
+                                  "state_ids": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "Challenges Motiv",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Motivating ating Deep Learning The simple machine learning algorithms described ",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "5.11",
+                  "type": "heading",
+                  "children": []
+                },
+                {
+                  "label": "Challenges",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "The Curse ofMotivating Deep Learning Dimensionality  Many machine learning probl",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                },
+                {
+                  "label": "The Curse of Dimensionality",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "155",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                          "type": "content",
+                          "state_ids": [
+                            "4",
+                            "9",
+                            "14",
+                            "20",
+                            "23",
+                            "35",
+                            "39",
+                            "43",
+                            "50"
+                          ]
+                        },
+                        {
+                          "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "Figure 5.9: As the number of relevant dimensions of the data increases (from lef",
+                              "type": "content",
+                              "state_ids": [
+                                "4",
+                                "9",
+                                "14",
+                                "20",
+                                "23",
+                                "39",
+                                "43",
+                                "50"
+                              ]
+                            },
+                            {
+                              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "meaningful about these new conﬁgurations? Many traditional machine learning algo",
+                                  "type": "content",
+                                  "state_ids": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Lo",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "Local cal Constancy and Smo Smoothness othness Regularization  In order to gener",
+                      "type": "content",
+                      "state_ids": []
+                    }
+                  ]
+                },
+                {
+                  "label": "the",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "calmost widely used Constancy    andof Smo theseothness implicit Regularization ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "region containing all the points x that have the same set of k nearest neighbors",
+                          "type": "content",
+                          "state_ids": []
+                        },
+                        {
+                          "label": "158",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                              "type": "content",
+                              "state_ids": [
+                                "4",
+                                "9",
+                                "14",
+                                "20",
+                                "23",
+                                "35",
+                                "39",
+                                "43",
+                                "50"
+                              ]
+                            },
+                            {
+                              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "Figure 5.10: Illustration of how the nearest neighbor algorithm breaks up the in",
+                                  "type": "content",
+                                  "state_ids": []
+                                },
+                                {
+                                  "label": "159",
+                                  "type": "heading",
+                                  "children": [
+                                    {
+                                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                                      "type": "content",
+                                      "state_ids": [
+                                        "4",
+                                        "9",
+                                        "14",
+                                        "20",
+                                        "23",
+                                        "35",
+                                        "39",
+                                        "43",
+                                        "50"
+                                      ]
+                                    },
+                                    {
+                                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                                      "type": "heading",
+                                      "children": [
+                                        {
+                                          "label": "entire checkerboard right is to cover each of its cells with at least one exampl",
+                                          "type": "content",
+                                          "state_ids": []
+                                        },
+                                        {
+                                          "label": "160",
+                                          "type": "heading",
+                                          "children": [
+                                            {
+                                              "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                                              "type": "content",
+                                              "state_ids": [
+                                                "4",
+                                                "9",
+                                                "14",
+                                                "20",
+                                                "23",
+                                                "35",
+                                                "39",
+                                                "43",
+                                                "50"
+                                              ]
+                                            },
+                                            {
+                                              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                                              "type": "heading",
+                                              "children": []
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "Manifold Learning",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "An important concept underlying many ideas in machine learning is that of a mani",
+                      "type": "content",
+                      "state_ids": []
+                    },
+                    {
+                      "label": "2.5",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "2.0",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "1.5",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "1.0",
+                                  "type": "heading",
+                                  "children": [
+                                    {
+                                      "label": "0.5",
+                                      "type": "heading",
+                                      "children": [
+                                        {
+                                          "label": "0.0",
+                                          "type": "heading",
+                                          "children": [
+                                            {
+                                              "label": "−0.5",
+                                              "type": "heading",
+                                              "children": [
+                                                {
+                                                  "label": "−1.0",
+                                                  "type": "heading",
+                                                  "children": []
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "1.0   1.5   2.0         2.5   3.0   3.5   4.0",
+              "type": "heading",
+              "children": [
+                {
+                  "label": "Figure 5.11: Data sampled from a distribution in a two-dimensional space that is",
+                  "type": "content",
+                  "state_ids": []
+                },
+                {
+                  "label": "161",
+                  "type": "heading",
+                  "children": [
+                    {
+                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                      "type": "content",
+                      "state_ids": [
+                        "4",
+                        "9",
+                        "14",
+                        "20",
+                        "23",
+                        "35",
+                        "39",
+                        "43",
+                        "50"
+                      ]
+                    },
+                    {
+                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                      "type": "heading",
+                      "children": [
+                        {
+                          "label": "Many machine learning problems seem hopeless if we expect the machine learning a",
+                          "type": "content",
+                          "state_ids": []
+                        },
+                        {
+                          "label": "162",
+                          "type": "heading",
+                          "children": [
+                            {
+                              "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                              "type": "content",
+                              "state_ids": [
+                                "4",
+                                "9",
+                                "14",
+                                "20",
+                                "23",
+                                "35",
+                                "39",
+                                "43",
+                                "50"
+                              ]
+                            },
+                            {
+                              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                              "type": "heading",
+                              "children": [
+                                {
+                                  "label": "Figure 5.12: Sampling images uniformly at random (by randomly picking each pixel",
+                                  "type": "content",
+                                  "state_ids": []
+                                },
+                                {
+                                  "label": "163",
+                                  "type": "heading",
+                                  "children": [
+                                    {
+                                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                                      "type": "content",
+                                      "state_ids": [
+                                        "4",
+                                        "9",
+                                        "14",
+                                        "20",
+                                        "23",
+                                        "35",
+                                        "39",
+                                        "43",
+                                        "50"
+                                      ]
+                                    },
+                                    {
+                                      "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                                      "type": "heading",
+                                      "children": [
+                                        {
+                                          "label": "examples, with each example surrounded by other highly similar examples that may",
+                                          "type": "content",
+                                          "state_ids": []
+                                        },
+                                        {
+                                          "label": "164",
+                                          "type": "heading",
+                                          "children": [
+                                            {
+                                              "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                                              "type": "content",
+                                              "state_ids": [
+                                                "4",
+                                                "9",
+                                                "14",
+                                                "20",
+                                                "23",
+                                                "35",
+                                                "39",
+                                                "43",
+                                                "50"
+                                              ]
+                                            },
+                                            {
+                                              "label": "CHAPTER 5. MACHINE LEARNING BASICS",
+                                              "type": "heading",
+                                              "children": [
+                                                {
+                                                  "label": "Figure 5.13: Training examples from the QMUL Multiview Face Dataset (Gong et al.",
+                                                  "type": "content",
+                                                  "state_ids": []
+                                                },
+                                                {
+                                                  "label": "165",
+                                                  "type": "heading",
+                                                  "children": [
+                                                    {
+                                                      "label": "http://www.deeplearningbook.org/contents/ml.html                                ",
+                                                      "type": "content",
+                                                      "state_ids": [
+                                                        "4",
+                                                        "9",
+                                                        "14",
+                                                        "20",
+                                                        "23",
+                                                        "35",
+                                                        "39",
+                                                        "43",
+                                                        "50"
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "semantic": {
+      "label": "MachineLearningBasics.pdf",
+      "type": "root",
+      "children": [
+        {
+          "topic": "Chapter 5 - Machine Learning Basics",
+          "summary": "This chapter provides a brief course in the most important general principles that will be applied throughout the rest of the book. It introduces machine learning algorithms, optimization algorithms, cost functions and datasets needed to build these algorithms.",
+          "children": [
+            {
+              "topic": "Learning Algorithms",
+              "summary": "A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E.",
+              "state_ids": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51"
+              ]
+            },
+            {
+              "topic": "The Task (T)",
+              "summary": "Machine learning allows us to tackle tasks that are too difficult for fixed programs written and designed by human beings. From a scientific and philosophical point of view, machine learning is interesting because developing our understanding entails developing our understanding.",
+              "state_ids": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51"
+              ]
+            },
+            {
+              "topic": "The Performance Measure (P)",
+              "summary": "In order to evaluate the abilities of a machine learning algorithm, we must design a quantitative measure of its performance. Usually this performance measure P is specific to the task T being carried out by the system.",
+              "state_ids": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51"
+              ]
+            },
+            {
+              "topic": "The Experience (E)",
+              "summary": "Machine learning algorithms can be broadly categorized as unsupervised or supervised based on what kind of experience they are allowed during the learning process. Most traditional machine learning is considered 'unsupervised'.",
+              "state_ids": [
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51"
+              ]
+            },
+            {
+              "topic": "The Dataset",
+              "summary": "A dataset, a collection of many examples for building models in machine learning.",
+              "children": [
+                {
+                  "topic": "Example: Linear Regression",
+                  "summary": "An example of a simple machine learning algorithm is linear regression. It defines the relationship between input features and output label using parameters.",
+                  "state_ids": [
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24",
+                    "25",
+                    "26",
+                    "27",
+                    "28",
+                    "29",
+                    "30",
+                    "31",
+                    "32",
+                    "33",
+                    "34",
+                    "35",
+                    "36",
+                    "37",
+                    "38",
+                    "39",
+                    "40",
+                    "41",
+                    "42",
+                    "43",
+                    "44",
+                    "45",
+                    "46",
+                    "47",
+                    "48",
+                    "49",
+                    "50",
+                    "51"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "semantic_generated_at": "2026-07-30T03:26:38.698Z"
+  }
+}

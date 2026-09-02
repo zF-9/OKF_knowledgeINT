@@ -1,0 +1,723 @@
+{
+  "0": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "test_okf.pdf",
+    "section_index": 0,
+    "data": "Open Knowledge Format\nOKF is an open specification for building RAG systems.\nIt was created by Google AI in 2025 and uses role/state tables.\nThe Document Loader role ingests files into the knowledge base.\nThe Knowledge Integrator role answers questions using this data.\nOKF replaces vector databases with structured role/state patterns.\nEach KB row has a state_pattern and role_behavior field.\nThis approach is simpler and more interpretable than vector RAG.\n\f"
+  },
+  "1": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "DataEngineeringWithPython.pdf",
+    "section_index": 0,
+    "data": "[PDF extraction failed: Command failed: pdftotext -layout \"/tmp/okf_pdf_1785381941200.pdf\" \"/tmp/okf_pdf_1785381941200.txt\"\nSyntax Error: Couldn't find trailer dictionary\nSyntax Error: Invalid XRef entry 3027\nSyntax Error: Invalid XRef entry 2939\nSyntax Error: Top-level pages object is wrong type (null)\nCommand Line Error: Wrong page range given: the first page (1) can not be after the last page (0).\n]"
+  },
+  "2": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 0,
+    "data": "                 Mac\n                 Machine\n                    hine Learning Basics"
+  },
+  "3": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 1,
+    "data": "                 Deep learning is a speciﬁc kind of machine learning. In order to understand\n                 deep learning well, one must have a solid understanding of the basic principles of\n                 machine learning. This chapter provides a brief course in the most important general\n                 principles that will be applied throughout the rest of the book. Novice readers or\n                 those who want a wider perspective are encouraged to consider machine learning\n                 textbooks with a more comprehensive coverage of the fundamentals, such as Murphy\n                 (2012) or Bishop (2006). If you are already familiar with machine learning basics,\n                 feel free to skip ahead to section 5.11. That section covers some perspectives\n                 on traditional machine learning techniques that have strongly inﬂuenced the\n                 development of deep learning algorithms.\n                    We begin with a deﬁnition of what a learning algorithm is, and present an\n                 Chapter          5 regression algorithm. We then proceed to describe how the\n                 example: the linear\n                 challenge of ﬁtting the training data diﬀers from the challenge of ﬁnding patterns\n                 that generalize to new data. Most machine learning algorithms have settings\n                 called hyperparameters that must be determined external to the learning algorithm\n                 itself; we discuss how to set these using additional data. Machine learning is\n                 essentially a form of applied statistics with increased emphasis on the use of\n                 computers to statistically estimate complicated functions and a decreased emphasis\n                 on proving conﬁdence intervals around these functions; we therefore present the\n                 Machine Learning Basics\n                 two central approaches to statistics: frequentist estimators and Bayesian inference.\n                 Most machine learning algorithms can be divided into the categories of supervised\n                 learning and unsupervised learning; we describe these categories and give some\n                 examples of simple learning algorithms from each category. Most deep learning\n                 algorithms are based on an optimization algorithm called stochastic gradient\n                 descent. We describe how to combine various algorithm components such as"
+  },
+  "4": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 2,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                             Page 1 of 68\n\f                                                                                                         12/06/2017, 14:07"
+  },
+  "5": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 3,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "6": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 4,
+    "data": "                 an optimization algorithm, a cost function, a model, and a dataset to build a\n                 machine learning algorithm. Finally, in section 5.11, we describe some of the\n                 factors that have limited the ability of traditional machine learning to generalize.\n                 These challenges have motivated the development of deep learning algorithms that\n                 overcome these obstacles."
+  },
+  "7": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 5,
+    "data": "                 5.1        Learning Algorithms\n                 A machine learning algorithm is an algorithm that is able to learn from data. But\n                 what do we mean by learning? Mitchell (1997) provides the deﬁnition “A computer\n                 program is said to learn from experience E with respect to some class of tasks T\n                 and performance measure P , if its performance at tasks in T , as measured by P ,\n                 improves with experience E .” One can imagine a very wide variety of experiences\n                 E , tasks T , and performance measures P , and we do not make any attempt in this\n                 book to provide a formal deﬁnition of what may be used for each of these entities.\n                 Instead, the following sections provide intuitive descriptions and examples of the\n                 diﬀerent kinds of tasks, performance measures and experiences that can be used\n                 to construct machine learning algorithms."
+  },
+  "8": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 6,
+    "data": "                 5.1.1       The Task, T\n                 5.1 Learning\n                 Machine                Algorithms\n                           learning allows  us to tackle tasks that are too diﬃcult to solve with\n                 ﬁxed programs written and designed by human beings. From a scientiﬁc and\n                 philosophical point of view, machine learning is interesting because developing our\n                 understanding of machine learning entails developing our understanding of the\n                 principles that underlie intelligence.\n                     In this relatively formal deﬁnition of the word “task,” the process of learning\n                 itself is not the task. Learning is our means of attaining the ability to perform the\n                 task. For example, if weT want a robot to be able to walk, then walking is the task.\n                 We could program the robot to learn to walk, or we could attempt to directly write\n                 a program that speciﬁes how to walk manually.\n                 5.1.1  Thelearning\n                    Machine  Task, tasks are usually described in terms of how the machine\n                 learning system should process an example. An example is a collection of features\n                 that have been quantitatively measured from some object or event that we want\n                 the machine learning system to process. We typically represent an example as a\n                 vector x ∈ Rn where each entry xi of the vector is another feature. For example,\n                 the features of an image are usually the values of the pixels in the image."
+  },
+  "9": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 7,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                             Page 2 of 68\n\f                                                                                                           12/06/2017, 14:07"
+  },
+  "10": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 8,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "11": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 9,
+    "data": "                    Many kinds of tasks can be solved with machine learning. Some of the most\n                 common machine learning tasks include the following:"
+  },
+  "12": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 10,
+    "data": "                      • Classiﬁcation: In this type of task, the computer program is asked to specify\n                        which of k categories some input belongs to. To solve this task, the learning\n                        algorithm is usually asked to produce a function f : Rn → {1, . . . , k}. When\n                        y = f (x), the model assigns an input described by vector x to a category\n                        identiﬁed by numeric code y . There are other variants of the classiﬁcation\n                        task, for example, where f outputs a probability distribution over classes.\n                        An example of a classiﬁcation task is object recognition, where the input\n                        is an image (usually described as a set of pixel brightness values), and the\n                        output is a numeric code identifying the object in the image. For example,\n                        the Willow Garage PR2 robot is able to act as a waiter that can recognize\n                        diﬀerent kinds of drinks and deliver them to people on command (Good-\n                        fellow et al., 2010). Modern object recognition is best accomplished with\n                        deep learning (Krizhevsky et al., 2012; Ioﬀe and Szegedy, 2015). Object\n                        recognition is the same basic technology that allows computers to recognize\n                        faces (Taigman et al., 2014), which can be used to automatically tag people\n                        in photo collections and allow computers to interact more naturally with\n                        their users."
+  },
+  "13": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 11,
+    "data": "                      • Classiﬁcation with missing inputs: Classiﬁcation becomes more chal-\n                        lenging if the computer program is not guaranteed that every measurement\n                        in its input vector will always be provided. In order to solve the classiﬁcation\n                        task, the learning algorithm only has to deﬁne a single function mapping\n                        from a vector input to a categorical output. When some of the inputs may\n                        be missing, rather than providing a single classiﬁcation function, the learning\n                        algorithm must learn a set of functions. Each function corresponds to classi-\n                        fying x with a diﬀerent subset of its inputs missing. This kind of situation\n                        arises frequently in medical diagnosis, because many kinds of medical tests\n                        are expensive or invasive. One way to eﬃciently deﬁne such a large set\n                        of functions is to learn a probability distribution over all of the relevant\n                        variables, then solve the classiﬁcation task by marginalizing out the missing\n                        variables. With n input variables, we can now obtain all 2 n diﬀerent classiﬁ-\n                        cation functions needed for each possible set of missing inputs, but we only\n                        need to learn a single function describing the joint probability distribution.\n                        See Goodfellow et al. (2013b) for an example of a deep probabilistic model\n                        applied to such a task in this way. Many of the other tasks described in this\n                        section can also be generalized to work with missing inputs; classiﬁcation\n                        with missing inputs is just one example of what machine learning can do.\n                                                           100"
+  },
+  "14": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 12,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                               Page 3 of 68\n\f                                                                                                         12/06/2017, 14:07"
+  },
+  "15": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 13,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "16": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 14,
+    "data": "                      • Regression: In this type of task, the computer program is asked to predict a\n                        numerical value given some input. To solve this task, the learning algorithm\n                        is asked to output a function f : Rn → R. This type of task is similar to\n                        classiﬁcation, except that the format of output is diﬀerent. An example of\n                        a regression task is the prediction of the expected claim amount that an\n                        insured person will make (used to set insurance premiums), or the prediction\n                        of future prices of securities. These kinds of predictions are also used for\n                        algorithmic trading."
+  },
+  "17": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 15,
+    "data": "                      • Transcription: In this type of task, the machine learning system is asked\n                        to observe a relatively unstructured representation of some kind of data and\n                        transcribe it into discrete, textual form. For example, in optical character\n                        recognition, the computer program is shown a photograph containing an\n                        image of text and is asked to return this text in the form of a sequence\n                        of characters (e.g., in ASCII or Unicode format). Google Street View uses\n                        deep learning to process address numbers in this way (Goodfellow et al.,\n                        2014d). Another example is speech recognition, where the computer program\n                        is provided an audio waveform and emits a sequence of characters or word\n                        ID codes describing the words that were spoken in the audio recording. Deep\n                        learning is a crucial component of modern speech recognition systems used\n                        at major companies including Microsoft, IBM and Google (Hinton et al.,\n                        2012b)."
+  },
+  "18": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 16,
+    "data": "                      • Machine translation: In a machine translation task, the input already\n                        consists of a sequence of symbols in some language, and the computer program\n                        must convert this into a sequence of symbols in another language. This is\n                        commonly applied to natural languages, such as translating from English to\n                        French. Deep learning has recently begun to have an important impact on\n                        this kind of task (Sutskever et al., 2014; Bahdanau et al., 2015)."
+  },
+  "19": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 17,
+    "data": "                      • Structured output: Structured output tasks involve any task where the\n                        output is a vector (or other data structure containing multiple values) with\n                        important relationships between the diﬀerent elements. This is a broad\n                        category, and subsumes the transcription and translation tasks described\n                        above, but also many other tasks. One example is parsing—mapping a\n                        natural language sentence into a tree that describes its grammatical structure\n                        and tagging nodes of the trees as being verbs, nouns, or adverbs, and so on.\n                        See Collobert (2011) for an example of deep learning applied to a parsing\n                        task. Another example is pixel-wise segmentation of images, where the\n                        computer program assigns every pixel in an image to a speciﬁc category. For"
+  },
+  "20": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 18,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                             Page 4 of 68\n\f                                                                                                           12/06/2017, 14:07"
+  },
+  "21": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 19,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "22": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 20,
+    "data": "                         example, deep learning can be used to annotate the locations of roads in\n                         aerial photographs (Mnih and Hinton, 2010). The output need not have its\n                         form mirror the structure of the input as closely as in these annotation-style\n                         tasks. For example, in image captioning, the computer program observes an\n                         image and outputs a natural language sentence describing the image (Kiros\n                         et al., 2014a,b; Mao et al., 2015; Vinyals et al., 2015b; Donahue et al., 2014;\n                         Karpathy and Li, 2015; Fang et al., 2015; Xu et al., 2015). These tasks are\n                         called structured output tasks because the program must output several\n                         values that are all tightly inter-related. For example, the words produced by\n                         an image captioning program must form a valid sentence.\n                      • Anomaly detection: In this type of task, the computer program sifts\n                        through a set of events or objects, and ﬂags some of them as being unusual\n                        or atypical. An example of an anomaly detection task is credit card fraud\n                        detection. By modeling your purchasing habits, a credit card company can\n                        detect misuse of your cards. If a thief steals your credit card or credit card\n                        information, the thief’s purchases will often come from a diﬀerent probability\n                        distribution over purchase types than your own. The credit card company\n                        can prevent fraud by placing a hold on an account as soon as that card has\n                        been used for an uncharacteristic purchase. See Chandola et al. (2009) for a\n                        survey of anomaly detection methods.\n                      • Synthesis and sampling : In this type of task, the machine learning al-\n                        gorithm is asked to generate new examples that are similar to those in the\n                        training data. Synthesis and sampling via machine learning can be useful\n                        for media applications where it can be expensive or boring for an artist to\n                        generate large volumes of content by hand. For example, video games can\n                        automatically generate textures for large objects or landscapes, rather than\n                        requiring an artist to manually label each pixel (Luo et al., 2013). In some\n                        cases, we want the sampling or synthesis procedure to generate some speciﬁc\n                        kind of output given the input. For example, in a speech synthesis task, we\n                        provide a written sentence and ask the program to emit an audio waveform\n                        containing a spoken version of that sentence. This is a "
+  },
+  "23": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 21,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                               Page 5 of 68\n\f                                                                                                           12/06/2017, 14:07"
+  },
+  "24": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 22,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "25": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 23,
+    "data": "                      • Denoising: In this type of task, the machine learning algorithm is given in\n                        input a corrupted example x˜ ∈ Rn obtained by an unknown corruption process\n                        from a clean example x ∈ R n. The learner must predict the clean example\n                        x from its corrupted version x̃, or more generally predict the conditional\n                        probability distribution p(x | x̃)."
+  },
+  "26": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 24,
+    "data": "                      • Density estimation or probability mass function estimation : In\n                        the density estimation problem, the machine learning algorithm is asked\n                        to learn a function pmodel : R n → R, where pmodel (x) can be interpreted\n                        as a probability density function (if x is continuous) or a probability mass\n                        function (if x is discrete) on the space that the examples were drawn from.\n                        To do such a task well (we will specify exactly what that means when we\n                        discuss performance measures P ), the algorithm needs to learn the structure\n                        of the data it has seen. It must know where examples cluster tightly and\n                        where they are unlikely to occur. Most of the tasks described above require\n                        the learning algorithm to at least implicitly capture the structure of the\n                        probability distribution. Density estimation allows us to explicitly capture\n                        that distribution. In principle, we can then perform computations on that\n                        distribution in order to solve the other tasks as well. For example, if we\n                        have performed density estimation to obtain a probability distribution p(x),\n                        we can use that distribution to solve the missing value imputation task. If\n                        a value xi is missing and all of the other values, denoted x −i, are given,\n                        then we know the distribution over it is given by p(xi | x −i). In practice,\n                        density estimation does not always allow us to solve all of these related tasks,\n                        because in many cases the required operations on p( x) are computationally\n                        intractable."
+  },
+  "27": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 25,
+    "data": "                     Of course, many other tasks and types of tasks are possible. The types of tasks\n                 we list here are intended only to provide examples of what machine learning can\n                 do, not to deﬁne a rigid taxonomy of tasks."
+  },
+  "28": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 26,
+    "data": "                 5.1.2       The Performance Measure, P"
+  },
+  "29": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 27,
+    "data": "                 In order to evaluate the abilities of a machine learning algorithm, we must design\n                 a quantitative measure of its performance. Usually this performance measure P is\n                 speciﬁc to the task T being carried out by the system.\n                     For tasks such as classiﬁcation, classiﬁcation with missing inputs, and tran-\n                 scription, we often measure the accuracy of the model. Accuracy is just the\n                 proportion of examples for which the model produces the correct output. We can"
+  },
+  "30": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 28,
+    "data": "                 5.1.2       The Performance Measure,\nhttp://www.deeplearningbook.org/contents/ml.html                                                               Page 6 of 68\n\f                                                                                                          12/06/2017, 14:07"
+  },
+  "31": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 29,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "32": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 30,
+    "data": "                 also obtain equivalent information by measuring the error rate , the proportion\n                 of examples for which the model produces an incorrect output. We often refer to\n                 the error rate as the expected 0-1 loss. The 0-1 loss on a particular example is 0\n                 if it is correctly classiﬁed and 1 if it is not. For tasks such as density estimation,\n                 it does not make sense to measure accuracy, error rate, or any other kind of 0-1\n                 loss. Instead, we must use a diﬀerent performance metric that gives the model\n                 a continuous-valued score for each example. The most common approach is to\n                 report the average log-probability the model assigns to some examples.\n                     Usually we are interested in how well the machine learning algorithm performs\n                 on data that it has not seen before, since this determines how well it will work when\n                 deployed in the real world. We therefore evaluate these performance measures using\n                 a test set of data that is separate from the data used for training the machine\n                 learning system.\n                     The choice of performance measure may seem straightforward and objective,\n                 but it is often diﬃcult to choose a performance measure that corresponds well to\n                 the desired behavior of the system.\n                     In some cases, this is because it is diﬃcult to decide what should be measured.\n                 For example, when performing a transcription task, should we measure the accuracy\n                 of the system at transcribing entire sequences, or should we use a more ﬁne-grained\n                 performance measure that gives partial credit for getting some elements of the\n                 sequence correct? When performing a regression task, should we penalize the\n                 system more if it frequently makes medium-sized mistakes or if it rarely makes\n                 very large mistakes? These kinds of design choices depend on the application.\n                     In other cases, we know what quantity we would ideally like to measure, but\n                 measuring it is impractical. For example, this arises frequently in the context of\n                 density estimation. Many of the best probabilistic models represent probability\n                 distributions only implicitly. Computing the actual probability value assigned to\n                 a speciﬁc point in space in many such models is intractable. In these cases, one\n                 must design an alternative criterion that still corresponds to the design objectives,\n                 or design a good approximation to the desired criterion."
+  },
+  "33": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 31,
+    "data": "                 5.1.3       The Exp\n                                 Experience,\n                                     erience, E"
+  },
+  "34": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 32,
+    "data": "                 Machine learning algorithms can be broadly categorized as unsupervised or\n                 supervised by what kind of experience they are allowed to have during the\n                 learning process.\n                     Most of the learning algorithms in this book can be understood as being allowed\n                 to experience an entire dataset . A dataset is a collection of many examples, as\n                                                          104\n                                                   E"
+  },
+  "35": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 33,
+    "data": "                 5.1.3       The Experience,\nhttp://www.deeplearningbook.org/contents/ml.html                                                              Page 7 of 68\n\f                                                                                                           12/06/2017, 14:07"
+  },
+  "36": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 34,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "37": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 35,
+    "data": "                 deﬁned in section 5.1.1. Sometimes we will also call examples data points.\n                     One of the oldest datasets studied by statisticians and machine learning re-\n                 searchers is the Iris dataset (Fisher, 1936). It is a collection of measurements of\n                 diﬀerent parts of 150 iris plants. Each individual plant corresponds to one example.\n                 The features within each example are the measurements of each of the parts of the\n                 plant: the sepal length, sepal width, petal length and petal width. The dataset\n                 also records which species each plant belonged to. Three diﬀerent species are\n                 represented in the dataset.\n                     Unsupervised learning algorithms experience a dataset containing many\n                 features, then learn useful properties of the structure of this dataset. In the context\n                 of deep learning, we usually want to learn the entire probability distribution that\n                 generated a dataset, whether explicitly as in density estimation or implicitly for\n                 tasks like synthesis or denoising. Some other unsupervised learning algorithms\n                 perform other roles, like clustering, which consists of dividing the dataset into\n                 clusters of similar examples.\n                     Supervised learning algorithms experience a dataset containing features,\n                 but each example is also associated with a label or target. For example, the Iris\n                 dataset is annotated with the species of each iris plant. A supervised learning\n                 algorithm can study the Iris dataset and learn to classify iris plants into three\n                 diﬀerent species based on their measurements.\n                     Roughly speaking, unsupervised learning involves observing several examples\n                 of a random vector x, and attempting to implicitly or explicitly learn the proba-\n                 bility distribution p(x), or some interesting properties of that distribution, while\n                 supervised learning involves observing several examples of a random vector x and\n                 an associated value or vector y, and learning to predict y from x, usually by\n                 estimating p(y | x ). The term supervised learning originates from the view of\n                 the target y being provided by an instructor or teacher who shows the machine\n                 learning system what to do. In unsupervised learning, there is no instructor or\n                 teacher, and the algorithm must learn to make sense of the data without this guide.\n                    Unsupervised learning and supervised learning are not formally deﬁned terms.\n                 The lines between them are often blurred. Many machine learning technologies can\n                 be used to perform both tasks. For example, the chain rule of probability states\n       "
+  },
+  "38": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 36,
+    "data": "                 This decomposition means that we can solve the ostensibly unsupervised problem of\n                 modeling p(x) by splitting it into n supervised learning problems. Alternatively, we\n                                                                     105"
+  },
+  "39": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 37,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                               Page 8 of 68\n\f                                                                                                             12/06/2017, 14:07"
+  },
+  "40": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 38,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "41": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 39,
+    "data": "                 can solve the supervised learning problem of learning p(y | x) by using traditional\n                 unsupervised learning technologies to learn the joint distribution p(x, y) and\n                 inferring\n                                                            p(x, y)\n                                               p(y | x) =           \n                                                                        .                      (5.2)\n                                                            y p(x, y )"
+  },
+  "42": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 40,
+    "data": "                 Though unsupervised learning and supervised learning are not completely formal or\n                 distinct concepts, they do help to roughly categorize some of the things we do with\n                 machine learning algorithms. Traditionally, people refer to regression, classiﬁcation\n                 and structured output problems as supervised learning. Density estimation in\n                 support of other tasks is usually considered unsupervised learning.\n                     Other variants of the learning paradigm are possible. For example, in semi-\n                 supervised learning, some examples include a supervision target but others do\n                 not. In multi-instance learning, an entire collection of examples is labeled as\n                 containing or not containing an example of a class, but the individual members\n                 of the collection are not labeled. For a recent example of multi-instance learning\n                 with deep models, see Kotzias et al. (2015).\n                     Some machine learning algorithms do not just experience a ﬁxed dataset. For\n                 example, reinforcement learning algorithms interact with an environment, so\n                 there is a feedback loop between the learning system and its experiences. Such\n                 algorithms are beyond the scope of this book. Please see Sutton and Barto (1998)\n                 or Bertsekas and Tsitsiklis (1996) for information about reinforcement learning,\n                 and Mnih et al. (2013) for the deep learning approach to reinforcement learning.\n                    Most machine learning algorithms simply experience a dataset. A dataset can\n                 be described in many ways. In all cases, a dataset is a collection of examples,\n                 which are in turn collections of features.\n                     One common way of describing a dataset is with a design matrix. A design\n                 matrix is a matrix containing a diﬀerent example in each row. Each column of the\n                 matrix corresponds to a diﬀerent feature. For instance, the Iris dataset contains\n                 150 examples with four features for each example. This means we can represent\n                 the dataset with a design matrix X ∈ R150×4 , where Xi,1 is the sepal length of\n                 plant i, X i,2 is the sepal width of plant i , etc. We will describe most of the learning\n                 algorithms in this book in terms of how they operate on design matrix datasets.\n                     Of course, to describe a dataset as a design matrix, it must be possible to\n                 describe each example as a vector, and each of these vectors must be the same size.\n                 This is not always possible. For example, if you have a collection of photographs\n                 with diﬀerent widths and heights, then diﬀerent photographs will contain diﬀerent\n                 numbers of pixels, so not all of the p"
+  },
+  "43": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 41,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                                 Page 9 of 68\n\f                                                                                                            12/06/2017, 14:07"
+  },
+  "44": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 42,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "45": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 43,
+    "data": "                 types of such heterogeneous data. In cases like these, rather than describing the\n                 dataset as a matrix with m rows, we will describe it as a set containing m elements:\n                 {x(1) , x (2), . . . , x (m)}. This notation does not imply that any two example vectors\n                 x(i) and x(j) have the same size.\n                     In the case of supervised learning, the example contains a label or target as\n                 well as a collection of features. For example, if we want to use a learning algorithm\n                 to perform object recognition from photographs, we need to specify which object\n                 appears in each of the photos. We might do this with a numeric code, with 0\n                 signifying a person, 1 signifying a car, 2 signifying a cat, etc. Often when working\n                 with a dataset containing a design matrix of feature observations X , we also\n                 provide a vector of labels y, with yi providing the label for example i.\n                     Of course, sometimes the label may be more than just a single number. For\n                 example, if we want to train a speech recognition system to transcribe entire\n                 sentences, then the label for each example sentence is a sequence of words.\n                     Just as there is no formal deﬁnition of supervised and unsupervised learning,\n                 there is no rigid taxonomy of datasets or experiences. The structures described here\n                 cover most cases, but it is always possible to design new ones for new applications."
+  },
+  "46": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 44,
+    "data": "                 5.1.4       Example: Linear Regression"
+  },
+  "47": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 45,
+    "data": "                 Our deﬁnition of a machine learning algorithm as an algorithm that is capable\n                 of improving a computer program’s performance at some task via experience is\n                 somewhat abstract. To make this more concrete, we present an example of a\n                 simple machine learning algorithm: linear regression. We will return to this\n                 example repeatedly as we introduce more machine learning concepts that help to\n                 understand its behavior.\n                    As the name implies, linear regression solves a regression problem. In other\n                 words, the goal is to build a system that can take a vector x ∈ R n as input and\n                 predict the value of a scalar y ∈ R as its output. In the case of linear regression,\n                 the output is a linear function of the input. Let ŷ be the value that our model\n                 predicts y should takeLinear\n                 5.1.4 Example:         on. We Regression\n                                                 deﬁne the output to be"
+  },
+  "48": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 46,
+    "data": "                                                       ŷ = w  x                                  (5.3)"
+  },
+  "49": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 47,
+    "data": "                 where w ∈ Rn is a vector of parameters.\n                     Parameters are values that control the behavior of the system. In this case, wi is\n                 the coeﬃcient that we multiply by feature xi before summing up the contributions\n                 from all the features. We can think of w as a set of weights that determine how\n                 each feature aﬀects the prediction. If a feature xi receives a positive weight wi ,\n                                                           107"
+  },
+  "50": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 48,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                               Page 10 of 68\n\f                                                                                                              12/06/2017, 14:07"
+  },
+  "51": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 49,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "52": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "DataEngineeringWithPython.pdf",
+    "section_index": 0,
+    "data": "[PDF extraction failed: Command failed: pdftotext -layout \"/tmp/okf_pdf_1785383168103.pdf\" \"/tmp/okf_pdf_1785383168103.txt\"\nSyntax Error: Couldn't find trailer dictionary\nSyntax Error: Invalid XRef entry 3027\nSyntax Error: Invalid XRef entry 2939\nSyntax Error: Top-level pages object is wrong type (null)\nCommand Line Error: Wrong page range given: the first page (1) can not be after the last page (0).\n]"
+  },
+  "53": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 0,
+    "data": "                 Mac\n                 Machine\n                    hine Learning Basics"
+  },
+  "54": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 1,
+    "data": "                 Deep learning is a speciﬁc kind of machine learning. In order to understand\n                 deep learning well, one must have a solid understanding of the basic principles of\n                 machine learning. This chapter provides a brief course in the most important general\n                 principles that will be applied throughout the rest of the book. Novice readers or\n                 those who want a wider perspective are encouraged to consider machine learning\n                 textbooks with a more comprehensive coverage of the fundamentals, such as Murphy\n                 (2012) or Bishop (2006). If you are already familiar with machine learning basics,\n                 feel free to skip ahead to section 5.11. That section covers some perspectives\n                 on traditional machine learning techniques that have strongly inﬂuenced the\n                 development of deep learning algorithms.\n                    We begin with a deﬁnition of what a learning algorithm is, and present an\n                 Chapter          5 regression algorithm. We then proceed to describe how the\n                 example: the linear\n                 challenge of ﬁtting the training data diﬀers from the challenge of ﬁnding patterns\n                 that generalize to new data. Most machine learning algorithms have settings\n                 called hyperparameters that must be determined external to the learning algorithm\n                 itself; we discuss how to set these using additional data. Machine learning is\n                 essentially a form of applied statistics with increased emphasis on the use of\n                 computers to statistically estimate complicated functions and a decreased emphasis\n                 on proving conﬁdence intervals around these functions; we therefore present the\n                 Machine Learning Basics\n                 two central approaches to statistics: frequentist estimators and Bayesian inference.\n                 Most machine learning algorithms can be divided into the categories of supervised\n                 learning and unsupervised learning; we describe these categories and give some\n                 examples of simple learning algorithms from each category. Most deep learning\n                 algorithms are based on an optimization algorithm called stochastic gradient\n                 descent. We describe how to combine various algorithm components such as"
+  },
+  "55": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 2,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                             Page 1 of 68\n\f                                                                                                         12/06/2017, 14:07"
+  },
+  "56": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 3,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "57": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 4,
+    "data": "                 an optimization algorithm, a cost function, a model, and a dataset to build a\n                 machine learning algorithm. Finally, in section 5.11, we describe some of the\n                 factors that have limited the ability of traditional machine learning to generalize.\n                 These challenges have motivated the development of deep learning algorithms that\n                 overcome these obstacles."
+  },
+  "58": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 5,
+    "data": "                 5.1        Learning Algorithms\n                 A machine learning algorithm is an algorithm that is able to learn from data. But\n                 what do we mean by learning? Mitchell (1997) provides the deﬁnition “A computer\n                 program is said to learn from experience E with respect to some class of tasks T\n                 and performance measure P , if its performance at tasks in T , as measured by P ,\n                 improves with experience E .” One can imagine a very wide variety of experiences\n                 E , tasks T , and performance measures P , and we do not make any attempt in this\n                 book to provide a formal deﬁnition of what may be used for each of these entities.\n                 Instead, the following sections provide intuitive descriptions and examples of the\n                 diﬀerent kinds of tasks, performance measures and experiences that can be used\n                 to construct machine learning algorithms."
+  },
+  "59": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 6,
+    "data": "                 5.1.1       The Task, T\n                 5.1 Learning\n                 Machine                Algorithms\n                           learning allows  us to tackle tasks that are too diﬃcult to solve with\n                 ﬁxed programs written and designed by human beings. From a scientiﬁc and\n                 philosophical point of view, machine learning is interesting because developing our\n                 understanding of machine learning entails developing our understanding of the\n                 principles that underlie intelligence.\n                     In this relatively formal deﬁnition of the word “task,” the process of learning\n                 itself is not the task. Learning is our means of attaining the ability to perform the\n                 task. For example, if weT want a robot to be able to walk, then walking is the task.\n                 We could program the robot to learn to walk, or we could attempt to directly write\n                 a program that speciﬁes how to walk manually.\n                 5.1.1  Thelearning\n                    Machine  Task, tasks are usually described in terms of how the machine\n                 learning system should process an example. An example is a collection of features\n                 that have been quantitatively measured from some object or event that we want\n                 the machine learning system to process. We typically represent an example as a\n                 vector x ∈ Rn where each entry xi of the vector is another feature. For example,\n                 the features of an image are usually the values of the pixels in the image."
+  },
+  "60": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 7,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                             Page 2 of 68\n\f                                                                                                           12/06/2017, 14:07"
+  },
+  "61": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 8,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "62": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 9,
+    "data": "                    Many kinds of tasks can be solved with machine learning. Some of the most\n                 common machine learning tasks include the following:"
+  },
+  "63": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 10,
+    "data": "                      • Classiﬁcation: In this type of task, the computer program is asked to specify\n                        which of k categories some input belongs to. To solve this task, the learning\n                        algorithm is usually asked to produce a function f : Rn → {1, . . . , k}. When\n                        y = f (x), the model assigns an input described by vector x to a category\n                        identiﬁed by numeric code y . There are other variants of the classiﬁcation\n                        task, for example, where f outputs a probability distribution over classes.\n                        An example of a classiﬁcation task is object recognition, where the input\n                        is an image (usually described as a set of pixel brightness values), and the\n                        output is a numeric code identifying the object in the image. For example,\n                        the Willow Garage PR2 robot is able to act as a waiter that can recognize\n                        diﬀerent kinds of drinks and deliver them to people on command (Good-\n                        fellow et al., 2010). Modern object recognition is best accomplished with\n                        deep learning (Krizhevsky et al., 2012; Ioﬀe and Szegedy, 2015). Object\n                        recognition is the same basic technology that allows computers to recognize\n                        faces (Taigman et al., 2014), which can be used to automatically tag people\n                        in photo collections and allow computers to interact more naturally with\n                        their users."
+  },
+  "64": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 11,
+    "data": "                      • Classiﬁcation with missing inputs: Classiﬁcation becomes more chal-\n                        lenging if the computer program is not guaranteed that every measurement\n                        in its input vector will always be provided. In order to solve the classiﬁcation\n                        task, the learning algorithm only has to deﬁne a single function mapping\n                        from a vector input to a categorical output. When some of the inputs may\n                        be missing, rather than providing a single classiﬁcation function, the learning\n                        algorithm must learn a set of functions. Each function corresponds to classi-\n                        fying x with a diﬀerent subset of its inputs missing. This kind of situation\n                        arises frequently in medical diagnosis, because many kinds of medical tests\n                        are expensive or invasive. One way to eﬃciently deﬁne such a large set\n                        of functions is to learn a probability distribution over all of the relevant\n                        variables, then solve the classiﬁcation task by marginalizing out the missing\n                        variables. With n input variables, we can now obtain all 2 n diﬀerent classiﬁ-\n                        cation functions needed for each possible set of missing inputs, but we only\n                        need to learn a single function describing the joint probability distribution.\n                        See Goodfellow et al. (2013b) for an example of a deep probabilistic model\n                        applied to such a task in this way. Many of the other tasks described in this\n                        section can also be generalized to work with missing inputs; classiﬁcation\n                        with missing inputs is just one example of what machine learning can do.\n                                                           100"
+  },
+  "65": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 12,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                               Page 3 of 68\n\f                                                                                                         12/06/2017, 14:07"
+  },
+  "66": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 13,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "67": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 14,
+    "data": "                      • Regression: In this type of task, the computer program is asked to predict a\n                        numerical value given some input. To solve this task, the learning algorithm\n                        is asked to output a function f : Rn → R. This type of task is similar to\n                        classiﬁcation, except that the format of output is diﬀerent. An example of\n                        a regression task is the prediction of the expected claim amount that an\n                        insured person will make (used to set insurance premiums), or the prediction\n                        of future prices of securities. These kinds of predictions are also used for\n                        algorithmic trading."
+  },
+  "68": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 15,
+    "data": "                      • Transcription: In this type of task, the machine learning system is asked\n                        to observe a relatively unstructured representation of some kind of data and\n                        transcribe it into discrete, textual form. For example, in optical character\n                        recognition, the computer program is shown a photograph containing an\n                        image of text and is asked to return this text in the form of a sequence\n                        of characters (e.g., in ASCII or Unicode format). Google Street View uses\n                        deep learning to process address numbers in this way (Goodfellow et al.,\n                        2014d). Another example is speech recognition, where the computer program\n                        is provided an audio waveform and emits a sequence of characters or word\n                        ID codes describing the words that were spoken in the audio recording. Deep\n                        learning is a crucial component of modern speech recognition systems used\n                        at major companies including Microsoft, IBM and Google (Hinton et al.,\n                        2012b)."
+  },
+  "69": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 16,
+    "data": "                      • Machine translation: In a machine translation task, the input already\n                        consists of a sequence of symbols in some language, and the computer program\n                        must convert this into a sequence of symbols in another language. This is\n                        commonly applied to natural languages, such as translating from English to\n                        French. Deep learning has recently begun to have an important impact on\n                        this kind of task (Sutskever et al., 2014; Bahdanau et al., 2015)."
+  },
+  "70": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 17,
+    "data": "                      • Structured output: Structured output tasks involve any task where the\n                        output is a vector (or other data structure containing multiple values) with\n                        important relationships between the diﬀerent elements. This is a broad\n                        category, and subsumes the transcription and translation tasks described\n                        above, but also many other tasks. One example is parsing—mapping a\n                        natural language sentence into a tree that describes its grammatical structure\n                        and tagging nodes of the trees as being verbs, nouns, or adverbs, and so on.\n                        See Collobert (2011) for an example of deep learning applied to a parsing\n                        task. Another example is pixel-wise segmentation of images, where the\n                        computer program assigns every pixel in an image to a speciﬁc category. For"
+  },
+  "71": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 18,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                             Page 4 of 68\n\f                                                                                                           12/06/2017, 14:07"
+  },
+  "72": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 19,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "73": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 20,
+    "data": "                         example, deep learning can be used to annotate the locations of roads in\n                         aerial photographs (Mnih and Hinton, 2010). The output need not have its\n                         form mirror the structure of the input as closely as in these annotation-style\n                         tasks. For example, in image captioning, the computer program observes an\n                         image and outputs a natural language sentence describing the image (Kiros\n                         et al., 2014a,b; Mao et al., 2015; Vinyals et al., 2015b; Donahue et al., 2014;\n                         Karpathy and Li, 2015; Fang et al., 2015; Xu et al., 2015). These tasks are\n                         called structured output tasks because the program must output several\n                         values that are all tightly inter-related. For example, the words produced by\n                         an image captioning program must form a valid sentence.\n                      • Anomaly detection: In this type of task, the computer program sifts\n                        through a set of events or objects, and ﬂags some of them as being unusual\n                        or atypical. An example of an anomaly detection task is credit card fraud\n                        detection. By modeling your purchasing habits, a credit card company can\n                        detect misuse of your cards. If a thief steals your credit card or credit card\n                        information, the thief’s purchases will often come from a diﬀerent probability\n                        distribution over purchase types than your own. The credit card company\n                        can prevent fraud by placing a hold on an account as soon as that card has\n                        been used for an uncharacteristic purchase. See Chandola et al. (2009) for a\n                        survey of anomaly detection methods.\n                      • Synthesis and sampling : In this type of task, the machine learning al-\n                        gorithm is asked to generate new examples that are similar to those in the\n                        training data. Synthesis and sampling via machine learning can be useful\n                        for media applications where it can be expensive or boring for an artist to\n                        generate large volumes of content by hand. For example, video games can\n                        automatically generate textures for large objects or landscapes, rather than\n                        requiring an artist to manually label each pixel (Luo et al., 2013). In some\n                        cases, we want the sampling or synthesis procedure to generate some speciﬁc\n                        kind of output given the input. For example, in a speech synthesis task, we\n                        provide a written sentence and ask the program to emit an audio waveform\n                        containing a spoken version of that sentence. This is a "
+  },
+  "74": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 21,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                               Page 5 of 68\n\f                                                                                                           12/06/2017, 14:07"
+  },
+  "75": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 22,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "76": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 23,
+    "data": "                      • Denoising: In this type of task, the machine learning algorithm is given in\n                        input a corrupted example x˜ ∈ Rn obtained by an unknown corruption process\n                        from a clean example x ∈ R n. The learner must predict the clean example\n                        x from its corrupted version x̃, or more generally predict the conditional\n                        probability distribution p(x | x̃)."
+  },
+  "77": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 24,
+    "data": "                      • Density estimation or probability mass function estimation : In\n                        the density estimation problem, the machine learning algorithm is asked\n                        to learn a function pmodel : R n → R, where pmodel (x) can be interpreted\n                        as a probability density function (if x is continuous) or a probability mass\n                        function (if x is discrete) on the space that the examples were drawn from.\n                        To do such a task well (we will specify exactly what that means when we\n                        discuss performance measures P ), the algorithm needs to learn the structure\n                        of the data it has seen. It must know where examples cluster tightly and\n                        where they are unlikely to occur. Most of the tasks described above require\n                        the learning algorithm to at least implicitly capture the structure of the\n                        probability distribution. Density estimation allows us to explicitly capture\n                        that distribution. In principle, we can then perform computations on that\n                        distribution in order to solve the other tasks as well. For example, if we\n                        have performed density estimation to obtain a probability distribution p(x),\n                        we can use that distribution to solve the missing value imputation task. If\n                        a value xi is missing and all of the other values, denoted x −i, are given,\n                        then we know the distribution over it is given by p(xi | x −i). In practice,\n                        density estimation does not always allow us to solve all of these related tasks,\n                        because in many cases the required operations on p( x) are computationally\n                        intractable."
+  },
+  "78": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 25,
+    "data": "                     Of course, many other tasks and types of tasks are possible. The types of tasks\n                 we list here are intended only to provide examples of what machine learning can\n                 do, not to deﬁne a rigid taxonomy of tasks."
+  },
+  "79": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 26,
+    "data": "                 5.1.2       The Performance Measure, P"
+  },
+  "80": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 27,
+    "data": "                 In order to evaluate the abilities of a machine learning algorithm, we must design\n                 a quantitative measure of its performance. Usually this performance measure P is\n                 speciﬁc to the task T being carried out by the system.\n                     For tasks such as classiﬁcation, classiﬁcation with missing inputs, and tran-\n                 scription, we often measure the accuracy of the model. Accuracy is just the\n                 proportion of examples for which the model produces the correct output. We can"
+  },
+  "81": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 28,
+    "data": "                 5.1.2       The Performance Measure,\nhttp://www.deeplearningbook.org/contents/ml.html                                                               Page 6 of 68\n\f                                                                                                          12/06/2017, 14:07"
+  },
+  "82": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 29,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "83": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 30,
+    "data": "                 also obtain equivalent information by measuring the error rate , the proportion\n                 of examples for which the model produces an incorrect output. We often refer to\n                 the error rate as the expected 0-1 loss. The 0-1 loss on a particular example is 0\n                 if it is correctly classiﬁed and 1 if it is not. For tasks such as density estimation,\n                 it does not make sense to measure accuracy, error rate, or any other kind of 0-1\n                 loss. Instead, we must use a diﬀerent performance metric that gives the model\n                 a continuous-valued score for each example. The most common approach is to\n                 report the average log-probability the model assigns to some examples.\n                     Usually we are interested in how well the machine learning algorithm performs\n                 on data that it has not seen before, since this determines how well it will work when\n                 deployed in the real world. We therefore evaluate these performance measures using\n                 a test set of data that is separate from the data used for training the machine\n                 learning system.\n                     The choice of performance measure may seem straightforward and objective,\n                 but it is often diﬃcult to choose a performance measure that corresponds well to\n                 the desired behavior of the system.\n                     In some cases, this is because it is diﬃcult to decide what should be measured.\n                 For example, when performing a transcription task, should we measure the accuracy\n                 of the system at transcribing entire sequences, or should we use a more ﬁne-grained\n                 performance measure that gives partial credit for getting some elements of the\n                 sequence correct? When performing a regression task, should we penalize the\n                 system more if it frequently makes medium-sized mistakes or if it rarely makes\n                 very large mistakes? These kinds of design choices depend on the application.\n                     In other cases, we know what quantity we would ideally like to measure, but\n                 measuring it is impractical. For example, this arises frequently in the context of\n                 density estimation. Many of the best probabilistic models represent probability\n                 distributions only implicitly. Computing the actual probability value assigned to\n                 a speciﬁc point in space in many such models is intractable. In these cases, one\n                 must design an alternative criterion that still corresponds to the design objectives,\n                 or design a good approximation to the desired criterion."
+  },
+  "84": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 31,
+    "data": "                 5.1.3       The Exp\n                                 Experience,\n                                     erience, E"
+  },
+  "85": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 32,
+    "data": "                 Machine learning algorithms can be broadly categorized as unsupervised or\n                 supervised by what kind of experience they are allowed to have during the\n                 learning process.\n                     Most of the learning algorithms in this book can be understood as being allowed\n                 to experience an entire dataset . A dataset is a collection of many examples, as\n                                                          104\n                                                   E"
+  },
+  "86": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 33,
+    "data": "                 5.1.3       The Experience,\nhttp://www.deeplearningbook.org/contents/ml.html                                                              Page 7 of 68\n\f                                                                                                           12/06/2017, 14:07"
+  },
+  "87": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 34,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "88": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 35,
+    "data": "                 deﬁned in section 5.1.1. Sometimes we will also call examples data points.\n                     One of the oldest datasets studied by statisticians and machine learning re-\n                 searchers is the Iris dataset (Fisher, 1936). It is a collection of measurements of\n                 diﬀerent parts of 150 iris plants. Each individual plant corresponds to one example.\n                 The features within each example are the measurements of each of the parts of the\n                 plant: the sepal length, sepal width, petal length and petal width. The dataset\n                 also records which species each plant belonged to. Three diﬀerent species are\n                 represented in the dataset.\n                     Unsupervised learning algorithms experience a dataset containing many\n                 features, then learn useful properties of the structure of this dataset. In the context\n                 of deep learning, we usually want to learn the entire probability distribution that\n                 generated a dataset, whether explicitly as in density estimation or implicitly for\n                 tasks like synthesis or denoising. Some other unsupervised learning algorithms\n                 perform other roles, like clustering, which consists of dividing the dataset into\n                 clusters of similar examples.\n                     Supervised learning algorithms experience a dataset containing features,\n                 but each example is also associated with a label or target. For example, the Iris\n                 dataset is annotated with the species of each iris plant. A supervised learning\n                 algorithm can study the Iris dataset and learn to classify iris plants into three\n                 diﬀerent species based on their measurements.\n                     Roughly speaking, unsupervised learning involves observing several examples\n                 of a random vector x, and attempting to implicitly or explicitly learn the proba-\n                 bility distribution p(x), or some interesting properties of that distribution, while\n                 supervised learning involves observing several examples of a random vector x and\n                 an associated value or vector y, and learning to predict y from x, usually by\n                 estimating p(y | x ). The term supervised learning originates from the view of\n                 the target y being provided by an instructor or teacher who shows the machine\n                 learning system what to do. In unsupervised learning, there is no instructor or\n                 teacher, and the algorithm must learn to make sense of the data without this guide.\n                    Unsupervised learning and supervised learning are not formally deﬁned terms.\n                 The lines between them are often blurred. Many machine learning technologies can\n                 be used to perform both tasks. For example, the chain rule of probability states\n       "
+  },
+  "89": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 36,
+    "data": "                 This decomposition means that we can solve the ostensibly unsupervised problem of\n                 modeling p(x) by splitting it into n supervised learning problems. Alternatively, we\n                                                                     105"
+  },
+  "90": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 37,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                               Page 8 of 68\n\f                                                                                                             12/06/2017, 14:07"
+  },
+  "91": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 38,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "92": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 39,
+    "data": "                 can solve the supervised learning problem of learning p(y | x) by using traditional\n                 unsupervised learning technologies to learn the joint distribution p(x, y) and\n                 inferring\n                                                            p(x, y)\n                                               p(y | x) =           \n                                                                        .                      (5.2)\n                                                            y p(x, y )"
+  },
+  "93": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 40,
+    "data": "                 Though unsupervised learning and supervised learning are not completely formal or\n                 distinct concepts, they do help to roughly categorize some of the things we do with\n                 machine learning algorithms. Traditionally, people refer to regression, classiﬁcation\n                 and structured output problems as supervised learning. Density estimation in\n                 support of other tasks is usually considered unsupervised learning.\n                     Other variants of the learning paradigm are possible. For example, in semi-\n                 supervised learning, some examples include a supervision target but others do\n                 not. In multi-instance learning, an entire collection of examples is labeled as\n                 containing or not containing an example of a class, but the individual members\n                 of the collection are not labeled. For a recent example of multi-instance learning\n                 with deep models, see Kotzias et al. (2015).\n                     Some machine learning algorithms do not just experience a ﬁxed dataset. For\n                 example, reinforcement learning algorithms interact with an environment, so\n                 there is a feedback loop between the learning system and its experiences. Such\n                 algorithms are beyond the scope of this book. Please see Sutton and Barto (1998)\n                 or Bertsekas and Tsitsiklis (1996) for information about reinforcement learning,\n                 and Mnih et al. (2013) for the deep learning approach to reinforcement learning.\n                    Most machine learning algorithms simply experience a dataset. A dataset can\n                 be described in many ways. In all cases, a dataset is a collection of examples,\n                 which are in turn collections of features.\n                     One common way of describing a dataset is with a design matrix. A design\n                 matrix is a matrix containing a diﬀerent example in each row. Each column of the\n                 matrix corresponds to a diﬀerent feature. For instance, the Iris dataset contains\n                 150 examples with four features for each example. This means we can represent\n                 the dataset with a design matrix X ∈ R150×4 , where Xi,1 is the sepal length of\n                 plant i, X i,2 is the sepal width of plant i , etc. We will describe most of the learning\n                 algorithms in this book in terms of how they operate on design matrix datasets.\n                     Of course, to describe a dataset as a design matrix, it must be possible to\n                 describe each example as a vector, and each of these vectors must be the same size.\n                 This is not always possible. For example, if you have a collection of photographs\n                 with diﬀerent widths and heights, then diﬀerent photographs will contain diﬀerent\n                 numbers of pixels, so not all of the p"
+  },
+  "94": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 41,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                                 Page 9 of 68\n\f                                                                                                            12/06/2017, 14:07"
+  },
+  "95": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 42,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  },
+  "96": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 43,
+    "data": "                 types of such heterogeneous data. In cases like these, rather than describing the\n                 dataset as a matrix with m rows, we will describe it as a set containing m elements:\n                 {x(1) , x (2), . . . , x (m)}. This notation does not imply that any two example vectors\n                 x(i) and x(j) have the same size.\n                     In the case of supervised learning, the example contains a label or target as\n                 well as a collection of features. For example, if we want to use a learning algorithm\n                 to perform object recognition from photographs, we need to specify which object\n                 appears in each of the photos. We might do this with a numeric code, with 0\n                 signifying a person, 1 signifying a car, 2 signifying a cat, etc. Often when working\n                 with a dataset containing a design matrix of feature observations X , we also\n                 provide a vector of labels y, with yi providing the label for example i.\n                     Of course, sometimes the label may be more than just a single number. For\n                 example, if we want to train a speech recognition system to transcribe entire\n                 sentences, then the label for each example sentence is a sequence of words.\n                     Just as there is no formal deﬁnition of supervised and unsupervised learning,\n                 there is no rigid taxonomy of datasets or experiences. The structures described here\n                 cover most cases, but it is always possible to design new ones for new applications."
+  },
+  "97": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 44,
+    "data": "                 5.1.4       Example: Linear Regression"
+  },
+  "98": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 45,
+    "data": "                 Our deﬁnition of a machine learning algorithm as an algorithm that is capable\n                 of improving a computer program’s performance at some task via experience is\n                 somewhat abstract. To make this more concrete, we present an example of a\n                 simple machine learning algorithm: linear regression. We will return to this\n                 example repeatedly as we introduce more machine learning concepts that help to\n                 understand its behavior.\n                    As the name implies, linear regression solves a regression problem. In other\n                 words, the goal is to build a system that can take a vector x ∈ R n as input and\n                 predict the value of a scalar y ∈ R as its output. In the case of linear regression,\n                 the output is a linear function of the input. Let ŷ be the value that our model\n                 predicts y should takeLinear\n                 5.1.4 Example:         on. We Regression\n                                                 deﬁne the output to be"
+  },
+  "99": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 46,
+    "data": "                                                       ŷ = w  x                                  (5.3)"
+  },
+  "100": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 47,
+    "data": "                 where w ∈ Rn is a vector of parameters.\n                     Parameters are values that control the behavior of the system. In this case, wi is\n                 the coeﬃcient that we multiply by feature xi before summing up the contributions\n                 from all the features. We can think of w as a set of weights that determine how\n                 each feature aﬀects the prediction. If a feature xi receives a positive weight wi ,\n                                                           107"
+  },
+  "101": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 48,
+    "data": "http://www.deeplearningbook.org/contents/ml.html                                                               Page 10 of 68\n\f                                                                                                              12/06/2017, 14:07"
+  },
+  "102": {
+    "state_pattern": "document_section",
+    "role_behavior": "Knowledge Integrator",
+    "filename": "MachineLearningBasics.pdf",
+    "section_index": 49,
+    "data": "                 CHAPTER 5. MACHINE LEARNING BASICS"
+  }
+}
