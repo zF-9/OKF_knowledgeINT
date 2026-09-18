@@ -4,7 +4,7 @@ process.on("uncaughtException", e => console.error("Uncaught:", e.message));
 
 // ---- OKF Knowledge Base (role/state table replaces vectors)
 let _kb = {};
-const KB_FILE = path.join("/home/zumaai/Projects/base", "kfgrag_kb.json");
+const KB_FILE = path.join(__dirname, "kfgrag_kb.json");
 try { _kb = JSON.parse(fs.readFileSync(KB_FILE, "utf-8")); } catch { _kb = {}; }
 
 function saveKB() {
@@ -15,19 +15,22 @@ saveKB();
 
 // ---- Text cache (preserves pdftotext layout for structure tree)
 let _texts = {};
-const TEXTS_FILE = path.join("/home/zumaai/Projects/base", "kfgrag_texts.json");
+const TEXTS_FILE = path.join(__dirname, "kfgrag_texts.json");
 try { _texts = JSON.parse(fs.readFileSync(TEXTS_FILE, "utf-8")); } catch { _texts = {}; }
 function saveTexts() { fs.writeFileSync(TEXTS_FILE, JSON.stringify(_texts, null, 2)); }
 
 // ---- Tree cache (structural + semantic)
 let _trees = {};
-const TREES_FILE = path.join("/home/zumaai/Projects/base", "kfgrag_trees.json");
+const TREES_FILE = path.join(__dirname, "kfgrag_trees.json");
 try { _trees = JSON.parse(fs.readFileSync(TREES_FILE, "utf-8")); } catch { _trees = {}; }
 function saveTrees() { fs.writeFileSync(TREES_FILE, JSON.stringify(_trees, null, 2)); }
 
 // Each KB row keyed by state_id: { state_pattern, role_behavior, data }
 // state_pattern = the action (e.g. "document_uploaded", "user_asked_question")
 // role_behavior = which role responds (e.g. "Document Loader", "Knowledge Integrator")
+
+// ---- Source documents directory (auto-ingested at startup)
+const SOURCE_DIR = path.join(__dirname, "source");
 
 // ---- parse multipart form data — returns { filename, content, rawBuffer }
 function parseMultipart(bodyBuf, contentType) {
@@ -63,7 +66,7 @@ function parseMultipart(bodyBuf, contentType) {
   }
 }
 
-let MODEL = "ornith:9b";
+let MODEL = "sailor2:latest"; //"ornith:9b";
 
 // ---- Extract text from PDF via pdftotext (no npm deps needed)
 function extractPDF(filePath) {
@@ -193,6 +196,42 @@ async function fetchModels() {
   } catch { return [MODEL]; }
 }
 
+// ---- Recursively list PDFs under a directory (keyed by slash-relative path)
+function listSourcePDFs(dir, prefix) {
+  const files = [];
+  for (const name of fs.readdirSync(dir).sort()) {
+    const full = path.join(dir, name);
+    const rel = prefix ? `${prefix}/${name}` : name;
+    const stat = fs.statSync(full);
+    if (stat.isDirectory()) files.push(...listSourcePDFs(full, rel));
+    else if (name.toLowerCase().endsWith(".pdf")) files.push({ full, rel });
+  }
+  return files;
+}
+
+// ---- Rebuild the KB from source/ on startup (replaces any prior contents)
+function ingestSource() {
+  const pdfs = listSourcePDFs(SOURCE_DIR, "");
+  _kb = {};
+  _texts = {};
+  let rows = 0;
+  for (const { full, rel } of pdfs) {
+    let extractedText = "";
+    try { extractedText = extractPDF(full); }
+    catch (e) { extractedText = `[PDF extraction failed for ${rel}: ${e.message}]`; }
+    _texts[rel] = extractedText;
+    const docRows = textToOKFRows(extractedText, rel);
+    const firstId = String(Object.keys(_kb).length);
+    docRows.forEach((row, i) => { _kb[String(Number(firstId) + i)] = row; });
+    rows += docRows.length;
+  }
+  _trees = {};
+  saveKB();
+  saveTexts();
+  saveTrees();
+  return { doc_count: pdfs.length, row_count: rows };
+}
+
 // ---- Streaming SSE response that routes to Ollama /api/chat
 async function streamOllama(res, messages, model) {
   const body = JSON.stringify({ model: model || MODEL, messages, stream: true });
@@ -262,7 +301,7 @@ const server = http.createServer(async (req, res) => {
 
   // ---- Serve chat UI
   if (method === "GET" && pathname === "/") {
-    const htmlPath = path.join("/home/zumaai/Projects/base", "ui.html");
+    const htmlPath = path.join(__dirname, "ui.html");
     try {
       const html = fs.readFileSync(htmlPath, "utf-8");
       res.setHeader("Content-Type", "text/html");
@@ -376,6 +415,49 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // ---- List documents in the KB (grouped by filename)
+  if (method === "GET" && pathname === "/api/documents") {
+    const counts = {};
+    for (const [, r] of Object.entries(_kb)) {
+      const f = r.filename || "";
+      counts[f] = (counts[f] || 0) + 1;
+    }
+    const docs = Object.entries(counts)
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([filename, row_count]) => ({ filename, row_count }));
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ documents: docs }));
+    return;
+  }
+
+  function contextRowString(id, row) {
+  return `[Row ${id}] pattern="${row.state_pattern}" role="${row.role_behavior}" filename="${row.filename}":\n${(row.data || "").slice(0, 3000)}`;
+}
+
+// ---- Bounded unfiltered context: sample rows evenly across all documents
+function sampleContextRows(budget) {
+  const byDoc = new Map();
+  for (const [id, row] of Object.entries(_kb)) {
+    const f = row.filename || "?";
+    if (!byDoc.has(f)) byDoc.set(f, []);
+    byDoc.get(f).push([id, row]);
+  }
+  const docs = [...byDoc.keys()].sort();
+  if (!docs.length) return [];
+  const base = Math.max(1, Math.floor(budget / docs.length));
+  let remainder = budget - base * docs.length;
+  const rows = [];
+  for (const f of docs) {
+    const docRows = byDoc.get(f)
+      .sort((a, b) => ((a[1].section_index) || 0) - ((b[1].section_index) || 0));
+    let take = base;
+    if (remainder > 0) { take += 1; remainder -= 1; }
+    take = Math.min(take, docRows.length);
+    for (let i = 0; i < take; i++) rows.push(docRows[i]);
+  }
+  return rows;
+}
+
   // ---- Chat with knowledge base context
   if (method === "POST" && pathname === "/api/chat") {
     const chunks = [];
@@ -392,14 +474,22 @@ const server = http.createServer(async (req, res) => {
       contextRows = filterIds.map(id => {
         const row = _kb[id];
         if (!row) return "";
-        return `[Row ${id}] pattern="${row.state_pattern}" role="${row.role_behavior}" filename="${row.filename}":\n${(row.data || "").slice(0, 3000)}`;
+        return contextRowString(id, row);
       }).filter(Boolean).join("\n\n");
     } else {
-      contextRows = Object.entries(_kb).map(([id, row]) =>
-        `[Row ${id}] pattern="${row.state_pattern}" role="${row.role_behavior}" filename="${row.filename}":\n${(row.data || "").slice(0, 3000)}`
-      ).join("\n\n");
+      contextRows = sampleContextRows(60).map(([id, row]) => contextRowString(id, row)).join("\n\n");
     }
-    const systemPrompt = `You are an OKF-driven RAG agent. Instead of using vector embeddings, your knowledge base comes from these role/state table rows:\n\n${contextRows || "(no documents loaded yet)"}\n\nAnswer the user's question based on this data. If no relevant data exists, say so.`;
+    const systemPrompt = `You are a professional assistant for Sabah state government public-sector documents (OKF-RAG knowledge base). Your knowledge base comes from these role/state table rows:
+
+${contextRows || "(no documents loaded yet)"}
+
+Rules:
+- Be courteous, professional, and helpful at all times.
+- For greetings, small talk, or off-topic questions: respond naturally and politely in the user's language (reply in Bahasa Malaysia if the user writes in Malay); do NOT force knowledge-base content into conversational replies. If the user only greets you, reply with a warm greeting and ask how you can help; do not list or summarize any documents.
+- For document questions: answer using the rows above. If no row is relevant, say so plainly; never invent or fabricate from partial fragments.
+- When you use a row, briefly reference its source filename or row ID.
+- Rely solely on the provided rows for document-specific facts; do not use outside knowledge for them.
+- Format responses for readability, GPT-style: open with a short direct answer, use paragraphs for explanation, use bullet points when listing more than one fact or item, and **bold** key terms (department names, figures, addresses, document titles). Keep it concise with no filler.`;
     const messages = [
       { role: "system", content: systemPrompt },
       { role: "user", content: userMsg }
@@ -417,8 +507,11 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
+// ---- Rebuild KB from source/ before accepting requests
+const s = ingestSource();
 server.listen(PORT, "127.0.0.1", () => {
   console.log(`OKF-RAG server running at http://127.0.0.1:${PORT}`);
   console.log(`Model: ${MODEL}`);
+  console.log(`Ingested source/: ${s.doc_count} docs -> ${s.row_count} rows`);
   console.log(`KB rows: ${Object.keys(_kb).length}`);
 });

@@ -64,7 +64,17 @@
   #table-view .filter-link { color: #3E6AE1; font-size: 11px; cursor: pointer; text-decoration: none; }
   #table-view .filter-link:hover { text-decoration: underline; }
   #table-view .empty { text-align: center; padding: 40px 0; color: #5C5E62; font-size: 13px; }
-  .msg { max-width: 70%; padding: 12px 16px; line-height: 1.5; font-size: 14px; animation: fadeIn 0.33s; border-radius: 4px; }
+  .msg { max-width: 70%; padding: 12px 16px; line-height: 1.55; font-size: 14px; animation: fadeIn 0.33s; border-radius: 4px; }
+  .msg.assistant { max-width: 85%; }
+  .msg.assistant p { margin: 0 0 8px; }
+  .msg.assistant p:last-child { margin-bottom: 0; }
+  .msg.assistant ul, .msg.assistant ol { margin: 0 0 8px; padding-left: 20px; }
+  .msg.assistant ul:last-child, .msg.assistant ol:last-child { margin-bottom: 0; }
+  .msg.assistant li { margin: 2px 0; }
+  .msg.assistant h1, .msg.assistant h2, .msg.assistant h3 { font-size: 15px; font-weight: 600; color: #171A20; margin: 10px 0 6px; }
+  .msg.assistant code { background: #EEEEEE; border-radius: 3px; padding: 1px 4px; font-family: ui-monospace, monospace; font-size: 13px; }
+  .msg.assistant pre { background: #F4F4F4; border-radius: 4px; padding: 10px; overflow-x: auto; margin: 0 0 8px; }
+  .msg.assistant pre code { background: transparent; padding: 0; }
   .msg.user { align-self: flex-end; background: #3E6AE1; color: #FFFFFF; }
   .msg.assistant { align-self: flex-start; background: #F4F4F4; color: #393C41; }
   .msg.system { align-self: center; background: transparent; color: #5C5E62; font-size: 12px; padding: 4px 12px; text-align: center; }
@@ -128,6 +138,17 @@ let trees = {}; // filename → { structural: {...}, semantic: {...} }
     sel.addEventListener('change', () => { selectedModel = sel.value; });
   } catch {}
 })();
+
+async function loadDocuments() {
+  try {
+    const res = await fetch('/api/documents');
+    const data = await res.json();
+    const docs = data.documents || [];
+    loadedDocs = docs.map(d => ({ filename: d.filename, rows: d.row_count }));
+    if (docs.length) renderFiles();
+  } catch {}
+}
+loadDocuments();
 
 fileInput.addEventListener('change', async () => {
   for (const file of fileInput.files) {
@@ -331,6 +352,48 @@ function onNodeClick(node, rowEl) {
   sendMessageWithFilter(ids);
 }
 
+// ---- Tiny hand-rolled markdown renderer (escapes HTML first, then formats)
+function markdownToHtml(text) {
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  let html = esc(text);
+
+  // Fenced code blocks
+  html = html.replace(/```([\s\S]*?)```/g, (_, code) => `<pre><code>${code}</code></pre>`);
+
+  // Inline code (outside of pre)
+  html = html.replace(/(^|[^`])`([^`\n]+)`/g, '$1<code>$2</code>');
+
+  // Headings
+  html = html.replace(/^### (.*)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^## (.*)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^# (.*)$/gm, '<h3>$1</h3>');
+
+  // Bold + italic
+  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+
+  // Unordered lists (lines starting with - or * followed by space)
+  html = html.replace(/(?:^|\n)[ \t]*(?:[-*])[ \t]+([\s\S]*?)(?=\n[ \t]*(?:[-*])[ \t]+|\n\n|$)/g, '\n<ul><li>$1</li></ul>');
+  html = html.replace(/<\/ul>\s*<ul>/g, '');
+
+  // Ordered lists
+  html = html.replace(/(?:^|\n)[ \t]*\d+[.)][ \t]+([\s\S]*?)(?=\n[ \t]*\d+[.)][ \t]+|\n\n|$)/g, '\n<ol><li>$1</li></ol>');
+  html = html.replace(/<\/ol>\s*<ol>/g, '');
+
+  // Paragraphs / line breaks
+  const blocks = html.split(/\n\n+/);
+  html = blocks.map(block => {
+    const b = block.trim();
+    if (!b) return '';
+    if (/^<(pre|ul|ol|h[1-3])[\s>]/.test(b)) return b;
+    return '<p>' + b.replace(/\n/g, '<br>') + '</p>';
+  }).join('');
+
+  // Turn consecutive <p><li>...</li></p> wrapping into proper nested lists
+  html = html.replace(/<p><(ul|ol)>([\s\S]*?)<\/(ul|ol)><\/p>/g, '<$1>$2</$1>');
+  return html;
+}
+
 async function sendMessageWithFilter(filterIds) {
   const text = chatInput.value.trim();
   if (!text) return;
@@ -353,6 +416,11 @@ async function sendMessageWithFilter(filterIds) {
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
     let buffer = '';
+    let assistantRaw = '';
+    const renderAssistant = () => {
+      assistantDiv.innerHTML = markdownToHtml(assistantRaw);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    };
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
@@ -367,14 +435,14 @@ async function sendMessageWithFilter(filterIds) {
         try {
           const j = JSON.parse(payload);
           if (j.content) {
-            assistantDiv.textContent += j.content;
-            messagesEl.scrollTop = messagesEl.scrollHeight;
+            assistantRaw += j.content;
+            renderAssistant();
           }
         } catch {}
       }
     }
   } catch (e) {
-    assistantDiv.textContent = `Error: ${e.message}`;
+    assistantDiv.innerHTML = markdownToHtml(`Error: ${e.message}`);
   }
   sendBtn.disabled = false;
   statusEl.textContent = '';
