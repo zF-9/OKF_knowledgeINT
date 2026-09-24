@@ -66,7 +66,7 @@ function parseMultipart(bodyBuf, contentType) {
   }
 }
 
-let MODEL = "sailor2:latest"; //"ornith:9b";
+let MODEL = "pekeliling_talkbot:latest"; //"sailor2:latest"; //"ornith:9b";
 
 // ---- Extract text from PDF via pdftotext (no npm deps needed)
 function extractPDF(filePath) {
@@ -309,7 +309,7 @@ const server = http.createServer(async (req, res) => {
     } catch {
       // fallback inline UI if file missing
       res.setHeader("Content-Type", "text/html");
-      res.end(`<!DOCTYPE html><html><body><h2>OKF RAG Chat</h2>
+      res.end(`<!DOCTYPE html><html><body><h2>PEKELILING PERKHIDMATAN NEGERI SABAH - OKF Retrieval Chat</h2>
 <p>Server running. Upload a document via POST /api/upload then chat at /api/chat.</p></body></html>`);
     }
     return;
@@ -479,12 +479,19 @@ function sampleContextRows(budget) {
     } else {
       contextRows = sampleContextRows(60).map(([id, row]) => contextRowString(id, row)).join("\n\n");
     }
+    const hrNow = new Date().getHours();
+    const timeWord = hrNow < 12 ? "pagi" : "petang";
+    const greetingPhrase = `Assalamualaikum, selamat ${timeWord}, salam MADANI & salam Sabah Maju Jaya`;
     const systemPrompt = `You are a professional assistant for Sabah state government public-sector documents (OKF-RAG knowledge base). Your knowledge base comes from these role/state table rows:
 
 ${contextRows || "(no documents loaded yet)"}
 
 Rules:
 - Be courteous, professional, and helpful at all times.
+- introduce yourself ad an AI model design to explain policies, guidelines or directive based on the documents' content.
+- list out all the ministry & department involved in this government cicular as opening conversation.
+- Start-of-conversation greeting: when this turn is the start of a new conversation (the user's first message, a plain greeting, or a brand-new topic with no prior context), begin your reply with the exact phrase: "${greetingPhrase}".
+- Tagline sign-off: always close every response by incorporating the tagline "Salam Sabah Maju Jaya" as a brief final farewell, regardless of topic.
 - For greetings, small talk, or off-topic questions: respond naturally and politely in the user's language (reply in Bahasa Malaysia if the user writes in Malay); do NOT force knowledge-base content into conversational replies. If the user only greets you, reply with a warm greeting and ask how you can help; do not list or summarize any documents.
 - For document questions: answer using the rows above. If no row is relevant, say so plainly; never invent or fabricate from partial fragments.
 - When you use a row, briefly reference its source filename or row ID.

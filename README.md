@@ -28,8 +28,9 @@ The LLM receives all KB rows as plain-text context in its system prompt — no v
 ### Prerequisites
 
 - Node.js 18+
-- [Ollama](https://ollama.ai) running on `localhost:11434` with a model pulled (e.g. `ornith:9b`)
+- [Ollama](https://ollama.ai) running on `localhost:11434` with a model pulled (e.g. `pekeliling_talkbot:beta`)
 - `pdftotext` (part of [Poppler](https://poppler.freedesktop.org)) — required for PDF uploads
+- ollama run ZF2106/pekeliling_talkbot:beta (to pull fine tune model to local)
 
 ### Run
 

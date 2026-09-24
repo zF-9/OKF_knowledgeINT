@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OKF RAG Chat</title>
+<title>PEKELILING PERKHIDMATAN NEGERRI SABAH - OKF Retrieval Chat</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, Arial, sans-serif; background: #FFFFFF; height: 100vh; display: flex; color: #393C41; font-size: 14px; font-weight: 400; line-height: 1.43; }
@@ -103,7 +103,7 @@
 </div>
 <div id="main">
   <div id="main-header">
-    <h1>OKF RAG Chat</h1>
+    <h1>PEKELILING PERKHIDMATAN NEGERI SABAH - OKF Retrieval Chat</h1>
     <div class="toggle-group">
       <button id="table-toggle-btn" onclick="toggleTableView()">Table</button>
     </div>
@@ -126,7 +126,7 @@ const fileInput = document.getElementById('file-input');
 const fileListEl = document.getElementById('file-list');
 const statusEl = document.getElementById('status');
 let loadedDocs = [];
-let selectedModel = 'ornith:9b';
+let selectedModel = 'pekeliling_talkbot:latest'; //'ornith:9b';
 let trees = {}; // filename → { structural: {...}, semantic: {...} }
 
 (async function loadModels() {
