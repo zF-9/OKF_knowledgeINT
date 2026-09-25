@@ -68,6 +68,27 @@ function parseMultipart(bodyBuf, contentType) {
 
 let MODEL = "pekeliling_talkbot:latest"; //"sailor2:latest"; //"ornith:9b";
 
+// ---- Official institution names (abbreviation → full name)
+const INSTITUTIONS = [
+  "JKM — Jabatan Ketua Menteri (Chief Minister's Department)",
+  "JBNS / JBN — Jabatan Bendahari Negeri Sabah (State Treasurer's Department)",
+  "JPAN — Jabatan Perkhidmatan Awam Negeri (State Civil Service Department)",
+  "MOF — Kementerian Kewangan Negeri Sabah (Ministry of Finance)"
+];
+
+// ---- Map source-file prefixes to their official institution
+const FILE_INSTITUTIONS = [
+  { prefix: "jbn",  label: "Jabatan Bendahari Negeri Sabah (JBNS)" },
+  { prefix: "jpan", label: "Jabatan Perkhidmatan Awam Negeri (JPAN)" },
+  { prefix: "mof",  label: "Kementerian Kewangan Negeri Sabah (MOF)" }
+];
+
+function institutionFor(filename) {
+  const base = (filename || "").toLowerCase();
+  const hit = FILE_INSTITUTIONS.find(i => base.includes(i.prefix));
+  return hit ? hit.label : "";
+}
+
 // ---- Extract text from PDF via pdftotext (no npm deps needed)
 function extractPDF(filePath) {
   const outPath = filePath.replace(/\.pdf$/i, "") + ".txt";
@@ -431,7 +452,9 @@ const server = http.createServer(async (req, res) => {
   }
 
   function contextRowString(id, row) {
-  return `[Row ${id}] pattern="${row.state_pattern}" role="${row.role_behavior}" filename="${row.filename}":\n${(row.data || "").slice(0, 3000)}`;
+  const inst = institutionFor(row.filename);
+  const src = inst ? `${row.filename} (${inst})` : row.filename;
+  return `[Row ${id}] pattern="${row.state_pattern}" role="${row.role_behavior}" filename="${src}":\n${(row.data || "").slice(0, 3000)}`;
 }
 
 // ---- Bounded unfiltered context: sample rows evenly across all documents
@@ -468,6 +491,7 @@ function sampleContextRows(budget) {
     const userMsg = body.message || body.content || "";
     const selectedModel = body.model || MODEL;
     MODEL = selectedModel;
+    const isConversationStart = body.is_conversation_start === true;
     const filterIds = body.filter_ids;
     let contextRows;
     if (Array.isArray(filterIds) && filterIds.length) {
@@ -490,8 +514,13 @@ Rules:
 - Be courteous, professional, and helpful at all times.
 - introduce yourself ad an AI model design to explain policies, guidelines or directive based on the documents' content.
 - list out all the ministry & department involved in this government cicular as opening conversation.
-- Start-of-conversation greeting: when this turn is the start of a new conversation (the user's first message, a plain greeting, or a brand-new topic with no prior context), begin your reply with the exact phrase: "${greetingPhrase}".
-- Tagline sign-off: always close every response by incorporating the tagline "Salam Sabah Maju Jaya" as a brief final farewell, regardless of topic.
+- Institution reference — ALWAYS use these exact official names when naming ministries/departments or expanding abbreviations you encounter in the documents or source filenames:
+  ${INSTITUTIONS.map(i => `- ${i}`).join("\n  ")}
+- Never invent or guess institution names; if an abbreviation cannot be matched to the list above, keep the abbreviation as-is rather than fabricating an expansion.
+- ${isConversationStart
+    ? `This is the first message of the conversation. Begin your reply with the exact greeting phrase: "${greetingPhrase}".`
+    : `This is a follow-up message, NOT the start of the conversation. Do NOT begin with the start-of-conversation greeting; answer directly. You may open with a warm greeting only if the user's current message is itself a greeting.`}
+- Tagline sign-off: occasionally close with the tagline "Salam Sabah Maju Jaya" as a natural final sign-off (e.g., at the end of substantive answers) — not on every reply.
 - For greetings, small talk, or off-topic questions: respond naturally and politely in the user's language (reply in Bahasa Malaysia if the user writes in Malay); do NOT force knowledge-base content into conversational replies. If the user only greets you, reply with a warm greeting and ask how you can help; do not list or summarize any documents.
 - For document questions: answer using the rows above. If no row is relevant, say so plainly; never invent or fabricate from partial fragments.
 - When you use a row, briefly reference its source filename or row ID.

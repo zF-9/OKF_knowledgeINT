@@ -52,14 +52,14 @@
   #doc-content label { font-size: 12px; color: #5C5E62; padding: 0 12px; display: block; margin-bottom: 4px; }
   #model-select { width: calc(100% - 24px); margin: 0 12px 16px; padding: 8px 12px; background: #FFFFFF; color: #171A20; border: 1px solid #D0D1D2; border-radius: 4px; font-size: 13px; font-family: -apple-system, Arial, sans-serif; outline: none; transition: border-color 0.33s; appearance: auto; }
   #model-select:focus { border-color: #3E6AE1; }
-  #main { flex: 1; display: flex; flex-direction: column; min-width: 0; background: #FFFFFF; }
+  #main { flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 0; overflow: hidden; background: #FFFFFF; }
   #main-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px 0; }
   #main-header h1 { font-size: 14px; font-weight: 500; color: #171A20; }
   #main-header .toggle-group { display: flex; gap: 4px; }
   #table-toggle-btn { padding: 4px 12px; font-size: 12px; font-weight: 500; border: none; border-radius: 4px; cursor: pointer; background: transparent; color: #5C5E62; transition: all 0.33s; }
   #table-toggle-btn.active { background: #3E6AE1; color: #FFFFFF; }
   #table-toggle-btn:hover:not(.active) { background: #D0D1D2; }
-  #messages { flex: 1; overflow-y: auto; padding: 24px 32px; display: flex; flex-direction: column; gap: 8px; }
+  #messages { flex: 1; overflow-y: auto; padding: 24px 32px 96px; display: flex; flex-direction: column; gap: 8px; }
   #table-view { flex: 1; overflow-y: auto; padding: 16px 24px; display: none; flex-direction: column; min-height: 0; background: #FFFFFF; }
   #table-view.show { display: flex; }
   #table-view table { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -87,7 +87,8 @@
   .msg.assistant { align-self: flex-start; background: #F4F4F4; color: #393C41; }
   .msg.system { align-self: center; background: transparent; color: #5C5E62; font-size: 12px; padding: 4px 12px; text-align: center; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-  #input-area { display: flex; gap: 8px; padding: 16px 24px; background: #FFFFFF; border-top: 1px solid #EEEEEE; }
+  #input-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: #FFFFFF; border-top: 1px solid #EEEEEE; box-shadow: 0 -4px 12px rgba(0,0,0,0.06); }
+  #input-area { display: flex; gap: 8px; padding: 16px 24px; }
   #input-area input { flex: 1; padding: 10px 16px; border: 1px solid #D0D1D2; border-radius: 4px; font-size: 14px; font-family: -apple-system, Arial, sans-serif; color: #171A20; outline: none; transition: border-color 0.33s; }
   #input-area input::placeholder { color: #8E8E8E; }
   #input-area input:focus { border-color: #3E6AE1; }
@@ -129,6 +130,8 @@
     <div id="messages">
       <div class="msg system" style="padding: 20px 0;">Upload a document to begin. Click a document in the Documents tab to see its knowledge tree.</div>
     </div>
+  </div>
+  <div id="input-bar">
     <div id="status"></div>
     <div id="input-area">
       <input type="text" id="chat-input" placeholder="Ask a question..." autofocus>
@@ -427,6 +430,7 @@ async function sendMessageWithFilter(filterIds) {
   if (!text) return;
   const msg = text;
   chatInput.value = '';
+  const isConversationStart = !messagesEl.querySelector('.msg.user, .msg.assistant');
   addMessage('user', msg);
   sendBtn.disabled = true;
   statusEl.textContent = 'Thinking...';
@@ -434,7 +438,7 @@ async function sendMessageWithFilter(filterIds) {
   assistantDiv.className = 'msg assistant';
   messagesEl.appendChild(assistantDiv);
   try {
-    const body = { message: msg, model: selectedModel };
+    const body = { message: msg, model: selectedModel, is_conversation_start: isConversationStart };
     if (filterIds && filterIds.length) body.filter_ids = filterIds;
     const res = await fetch('/api/chat', {
       method: 'POST',
@@ -447,7 +451,7 @@ async function sendMessageWithFilter(filterIds) {
     let assistantRaw = '';
     const renderAssistant = () => {
       assistantDiv.innerHTML = markdownToHtml(assistantRaw);
-      messagesEl.scrollTop = messagesEl.scrollHeight;
+      scrollChatToBottom();
     };
     while (true) {
       const { done, value } = await reader.read();
@@ -476,12 +480,16 @@ async function sendMessageWithFilter(filterIds) {
   statusEl.textContent = '';
 }
 
+function scrollChatToBottom() {
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
 function addMessage(role, text) {
   const div = document.createElement('div');
   div.className = `msg ${role}`;
   div.textContent = text;
   messagesEl.appendChild(div);
-  messagesEl.scrollTop = messagesEl.scrollHeight;
+  scrollChatToBottom();
 }
 
 async function sendMessage() {
