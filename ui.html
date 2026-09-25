@@ -6,11 +6,19 @@
 <title>PEKELILING PERKHIDMATAN NEGERRI SABAH - OKF Retrieval Chat</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, Arial, sans-serif; background: #FFFFFF; height: 100vh; display: flex; color: #393C41; font-size: 14px; font-weight: 400; line-height: 1.43; }
+  body { font-family: -apple-system, Arial, sans-serif; background: #FFFFFF; height: 100vh; display: flex; flex-direction: column; color: #393C41; font-size: 14px; font-weight: 400; line-height: 1.43; }
   ::selection { background: #3E6AE1; color: #fff; }
-  #sidebar { width: 300px; background: #F4F4F4; display: flex; flex-direction: column; flex-shrink: 0; transition: all 0.33s; overflow: hidden; }
-  #sidebar h2 { font-size: 14px; font-weight: 500; color: #171A20; padding: 16px 16px 8px; letter-spacing: normal; text-transform: none; }
-  #file-list { flex: 1; overflow-y: auto; font-size: 13px; padding: 0 12px; }
+  #tabbar { display: flex; gap: 4px; padding: 8px 24px 0; background: #FFFFFF; border-bottom: 1px solid #EEEEEE; flex-shrink: 0; }
+  .tab-btn { padding: 8px 16px; font-size: 14px; font-weight: 500; border: none; border-bottom: 2px solid transparent; border-radius: 4px 4px 0 0; cursor: pointer; background: transparent; color: #5C5E62; transition: all 0.33s; }
+  .tab-btn.active { background: #3E6AE1; color: #FFFFFF; border-bottom-color: #2D56C8; }
+  .tab-btn:hover:not(.active) { background: #D0D1D2; }
+  #tab-chat, #tab-documents { flex: 1; display: none; flex-direction: column; min-height: 0; background: #FFFFFF; }
+  #tab-chat.active, #tab-documents.active { display: flex; }
+  #tab-documents { background: #F4F4F4; }
+  #doc-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px 0; }
+  #doc-header h2 { font-size: 14px; font-weight: 500; color: #171A20; letter-spacing: normal; text-transform: none; }
+  #doc-content { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  #file-list { flex: 1; overflow-y: auto; font-size: 13px; padding: 8px 12px 0; min-height: 0; }
   .file-item { background: #FFFFFF; border-radius: 4px; margin: 4px 0; cursor: pointer; transition: background 0.33s; }
   .file-item:hover { background: #EEEEEE; }
   .file-header { padding: 10px 12px; display: flex; align-items: center; gap: 8px; }
@@ -40,9 +48,9 @@
   .tree-children { padding-left: 14px; }
   .upload-btn { display: block; width: calc(100% - 24px); margin: 8px 12px 0; padding: 10px; background: #FFFFFF; color: #393C41; border: none; border-radius: 4px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.33s, color 0.33s; }
   .upload-btn:hover { background: #EEEEEE; }
-  #sidebar hr { border: none; border-top: 1px solid #D0D1D2; margin: 12px 12px; }
-  #sidebar label { font-size: 12px; color: #5C5E62; padding: 0 12px; display: block; margin-bottom: 4px; }
-  #model-select { width: calc(100% - 24px); margin: 0 12px; padding: 8px 12px; background: #FFFFFF; color: #171A20; border: 1px solid #D0D1D2; border-radius: 4px; font-size: 13px; font-family: -apple-system, Arial, sans-serif; outline: none; transition: border-color 0.33s; appearance: auto; }
+  #doc-content hr { border: none; border-top: 1px solid #D0D1D2; margin: 12px 12px; }
+  #doc-content label { font-size: 12px; color: #5C5E62; padding: 0 12px; display: block; margin-bottom: 4px; }
+  #model-select { width: calc(100% - 24px); margin: 0 12px 16px; padding: 8px 12px; background: #FFFFFF; color: #171A20; border: 1px solid #D0D1D2; border-radius: 4px; font-size: 13px; font-family: -apple-system, Arial, sans-serif; outline: none; transition: border-color 0.33s; appearance: auto; }
   #model-select:focus { border-color: #3E6AE1; }
   #main { flex: 1; display: flex; flex-direction: column; min-width: 0; background: #FFFFFF; }
   #main-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px 0; }
@@ -52,7 +60,7 @@
   #table-toggle-btn.active { background: #3E6AE1; color: #FFFFFF; }
   #table-toggle-btn:hover:not(.active) { background: #D0D1D2; }
   #messages { flex: 1; overflow-y: auto; padding: 24px 32px; display: flex; flex-direction: column; gap: 8px; }
-  #table-view { flex: 1; overflow-y: auto; padding: 16px 24px; display: none; flex-direction: column; }
+  #table-view { flex: 1; overflow-y: auto; padding: 16px 24px; display: none; flex-direction: column; min-height: 0; background: #FFFFFF; }
   #table-view.show { display: flex; }
   #table-view table { width: 100%; border-collapse: collapse; font-size: 13px; }
   #table-view th { text-align: left; font-weight: 500; color: #171A20; padding: 8px 12px; border-bottom: 1px solid #D0D1D2; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -90,32 +98,42 @@
 </style>
 </head>
 <body>
-<div id="sidebar">
-  <h2>Documents</h2>
-  <div id="file-list">
-    <div style="color: #5C5E62; font-size: 12px; padding: 8px 12px;">No documents loaded yet.</div>
-  </div>
-  <input type="file" id="file-input" hidden multiple>
-  <button class="upload-btn" onclick="document.getElementById('file-input').click()">+ Upload Document</button>
-  <hr>
-  <label>Model</label>
-  <select id="model-select"></select>
+<div id="tabbar">
+  <button id="tab-btn-chat" class="tab-btn active" onclick="switchTab('chat')">Chat</button>
+  <button id="tab-btn-documents" class="tab-btn" onclick="switchTab('documents')">Documents</button>
 </div>
-<div id="main">
-  <div id="main-header">
-    <h1>PEKELILING PERKHIDMATAN NEGERI SABAH - OKF Retrieval Chat</h1>
+<div id="tab-documents">
+  <div id="doc-header">
+    <h2>Documents</h2>
     <div class="toggle-group">
       <button id="table-toggle-btn" onclick="toggleTableView()">Table</button>
     </div>
   </div>
-  <div id="messages">
-    <div class="msg system" style="padding: 20px 0;">Upload a document to begin. Click a document in the sidebar to see its knowledge tree.</div>
+  <div id="doc-content">
+    <div id="file-list">
+      <div style="color: #5C5E62; font-size: 12px; padding: 8px 12px;">No documents loaded yet.</div>
+    </div>
+    <input type="file" id="file-input" hidden multiple>
+    <button class="upload-btn" onclick="document.getElementById('file-input').click()">+ Upload Document</button>
+    <hr>
+    <label>Model</label>
+    <select id="model-select"></select>
   </div>
   <div id="table-view"></div>
-  <div id="status"></div>
-  <div id="input-area">
-    <input type="text" id="chat-input" placeholder="Ask a question..." autofocus>
-    <button id="send-btn" onclick="sendMessage()">Send</button>
+</div>
+<div id="tab-chat" class="active">
+  <div id="main">
+    <div id="main-header">
+      <h1>PEKELILING PERKHIDMATAN NEGERI SABAH - OKF Retrieval Chat</h1>
+    </div>
+    <div id="messages">
+      <div class="msg system" style="padding: 20px 0;">Upload a document to begin. Click a document in the Documents tab to see its knowledge tree.</div>
+    </div>
+    <div id="status"></div>
+    <div id="input-area">
+      <input type="text" id="chat-input" placeholder="Ask a question..." autofocus>
+      <button id="send-btn" onclick="sendMessage()">Send</button>
+    </div>
   </div>
 </div>
 <script>
@@ -394,7 +412,17 @@ function markdownToHtml(text) {
   return html;
 }
 
+// ---- Tab switching
+function switchTab(name) {
+  const chat = name === 'chat';
+  document.getElementById('tab-btn-chat').classList.toggle('active', chat);
+  document.getElementById('tab-btn-documents').classList.toggle('active', !chat);
+  document.getElementById('tab-chat').classList.toggle('active', chat);
+  document.getElementById('tab-documents').classList.toggle('active', !chat);
+}
+
 async function sendMessageWithFilter(filterIds) {
+  switchTab('chat');
   const text = chatInput.value.trim();
   if (!text) return;
   const msg = text;
@@ -467,17 +495,17 @@ let selectedDocIdx = null;
 function toggleTableView() {
   showTableView = !showTableView;
   const btn = document.getElementById('table-toggle-btn');
-  const messagesEl = document.getElementById('messages');
+  const docContent = document.getElementById('doc-content');
   const tableView = document.getElementById('table-view');
-  if (!btn || !messagesEl || !tableView) return;
+  if (!btn || !docContent || !tableView) return;
   btn.classList.toggle('active', showTableView);
-  messagesEl.style.display = showTableView ? 'none' : 'flex';
+  docContent.style.display = showTableView ? 'none' : 'flex';
   tableView.classList.toggle('show', showTableView);
   if (showTableView) {
     if (selectedDocIdx !== null && loadedDocs[selectedDocIdx]) {
       loadTableData(loadedDocs[selectedDocIdx].filename);
     } else {
-      tableView.innerHTML = '<div class="empty">Select a document from the sidebar to view its rows.</div>';
+      tableView.innerHTML = '<div class="empty">Select a document from the list to view its rows.</div>';
     }
   }
 }

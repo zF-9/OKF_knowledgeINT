@@ -30,7 +30,7 @@ The LLM receives all KB rows as plain-text context in its system prompt — no v
 - Node.js 18+
 - [Ollama](https://ollama.ai) running on `localhost:11434` with a model pulled (e.g. `pekeliling_talkbot:beta`)
 - `pdftotext` (part of [Poppler](https://poppler.freedesktop.org)) — required for PDF uploads
-- ollama run ZF2106/pekeliling_talkbot:beta (to pull fine tune model to local)
+- ollama run `ZF2106/pekeliling_talkbot:beta` (to pull fine-tuned model to local)
 
 ### Run
 
@@ -267,3 +267,28 @@ The interface follows a Tesla-inspired design system (see `DESIGN-tesla.md`):
 | `kfgrag_trees.json` | Also stores `semantic_generated_at` timestamps | — |
 
 Files are created automatically on first server run.
+
+## Changelog
+
+### 2026-09-25
+
+- **UI — two-tab layout**: replaced the sidebar + main layout with a full-width top tab bar.
+  - **Chat** tab: messages, status bar, and chat input.
+  - **Documents** tab: document list with expandable knowledge trees, **+ Upload Document**, Model selector, and the **Table** toggle (KB rows view).
+  - Clicking a knowledge-tree node or a table **Filter** link now auto-switches to the Chat tab before asking.
+- **README**: formatted the Ollama `pekeliling_talkbot` pull command as inline code.
+
+### 2026-09-24
+
+- Default model switched to `pekeliling_talkbot:latest`.
+- App/UI rebranded to "PEKELILING PERKHIDMATAN NEGERI SABAH - OKF Retrieval Chat".
+- Refined chat prompt: time-aware greeting ("Assalamualaikum, selamat pagi/petang, salam MADANI & salam Sabah Maju Jaya"), ministry/department listing on opening, self-introduction as a policy-explainer AI, and "Salam Sabah Maju Jaya" sign-off.
+
+### 2026-09-18
+
+- **Server**: repo-relative data paths; auto-ingest `source/` PDFs on startup (50 docs → 1955 KB rows); new `GET /api/documents`; bounded unfiltered context sampling (60 rows); Malaysian public-sector persona prompt.
+- **UI**: load persisted documents on startup; markdown-rendered GPT-style responses.
+
+### 2026-09-02
+
+- Initial project scaffolding / repository restructure.
