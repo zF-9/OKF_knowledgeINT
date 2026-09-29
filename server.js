@@ -230,6 +230,15 @@ function listSourcePDFs(dir, prefix) {
   return files;
 }
 
+// ---- Snapshot of PDFs under source/ (relative path -> mtime) for change detection
+function pdfSnapshot() {
+  try {
+    const snap = {};
+    for (const { full, rel } of listSourcePDFs(SOURCE_DIR, "")) snap[rel] = fs.statSync(full).mtimeMs;
+    return snap;
+  } catch { return {}; }
+}
+
 // ---- Rebuild the KB from source/ on startup (replaces any prior contents)
 function ingestSource() {
   const pdfs = listSourcePDFs(SOURCE_DIR, "");
@@ -544,10 +553,38 @@ Rules:
 });
 
 // ---- Rebuild KB from source/ before accepting requests
-const s = ingestSource();
+let lastSnapshot = pdfSnapshot();
+const hasSource = Object.keys(lastSnapshot).length > 0;
+const s = hasSource ? ingestSource() : { doc_count: 0, row_count: 0 };
 server.listen(PORT, "127.0.0.1", () => {
   console.log(`OKF-RAG server running at http://127.0.0.1:${PORT}`);
   console.log(`Model: ${MODEL}`);
-  console.log(`Ingested source/: ${s.doc_count} docs -> ${s.row_count} rows`);
+  if (hasSource) console.log(`Ingested source/: ${s.doc_count} docs -> ${s.row_count} rows`);
+  else console.log(`No PDFs in source/ — running from persisted kfgrag_*.json (${Object.keys(_kb).length} KB rows)`);
   console.log(`KB rows: ${Object.keys(_kb).length}`);
 });
+
+// ---- Watch source/ for PDF changes (insert/edit/remove) and re-ingest live
+let sourceIngesting = false;
+function checkSourceChanges() {
+  if (sourceIngesting) return;
+  const snap = pdfSnapshot();
+  if (JSON.stringify(snap) === JSON.stringify(lastSnapshot)) return;
+  console.log("Detected change in source/ — re-ingesting knowledge base...");
+  sourceIngesting = true;
+  try {
+    const r = ingestSource();
+    const hadFailures = Object.values(_texts).some(t => t && t.startsWith("[PDF extraction failed"));
+    if (hadFailures) {
+      console.log("Re-ingest had PDF extraction errors — will retry on next poll.");
+    } else {
+      lastSnapshot = snap;
+      console.log(`Re-ingested source/: ${r.doc_count} docs -> ${r.row_count} rows`);
+    }
+  } catch (e) {
+    console.error("Re-ingest failed:", e.message);
+  } finally {
+    sourceIngesting = false;
+  }
+}
+setInterval(checkSourceChanges, 5000);

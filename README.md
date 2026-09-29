@@ -30,7 +30,7 @@ The LLM receives all KB rows as plain-text context in its system prompt — no v
 - Node.js 18+
 - [Ollama](https://ollama.ai) running on `localhost:11434` with a model pulled (e.g. `pekeliling_talkbot:beta`)
 - `pdftotext` (part of [Poppler](https://poppler.freedesktop.org)) — required for PDF uploads
-- ollama run `ZF2106/pekeliling_talkbot:beta` (to pull fine-tuned model to local)
+- ollama run `ZF2106/pekeliling_talkbot:v1.3` (to pull fine-tuned model to local) : or use the older version `ZF2106/pekeliling_talkbot:beta`
 
 ### Run
 
@@ -267,6 +267,13 @@ The interface follows a Tesla-inspired design system (see `DESIGN-tesla.md`):
 | `kfgrag_trees.json` | Also stores `semantic_generated_at` timestamps | — |
 
 Files are created automatically on first server run.
+
+### Source PDFs: live re-ingest & JSON-only mode
+
+- On startup, the server prefers PDFs under `source/`. If any are present, the KB is rebuilt from them.
+- If `source/` is empty or missing, the server runs entirely from the persisted `kfgrag_kb.json` / `kfgrag_texts.json` / `kfgrag_trees.json` — no `pdftotext` needed.
+- While running, the server polls `source/` every 5 seconds. Inserting, editing, or removing a PDF triggers an automatic KB re-ingest (retried on the next poll if a PDF was mid-copy).
+- The Documents tab auto-refreshes (every 5s and when switched to) so newly ingested documents appear without reloading the page.
 
 ## Changelog
 

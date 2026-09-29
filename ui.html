@@ -166,10 +166,28 @@ async function loadDocuments() {
     const data = await res.json();
     const docs = data.documents || [];
     loadedDocs = docs.map(d => ({ filename: d.filename, rows: d.row_count }));
-    if (docs.length) renderFiles();
+    renderFiles();
   } catch {}
 }
 loadDocuments();
+
+let refreshInFlight = false;
+async function refreshDocuments() {
+  if (refreshInFlight) return;
+  refreshInFlight = true;
+  try {
+    const res = await fetch('/api/documents');
+    const data = await res.json();
+    const docs = data.documents || [];
+    const sig = docs.map(d => `${d.filename}:${d.row_count}`).join('|');
+    if (sig !== lastDocSignature) {
+      loadedDocs = docs.map(d => ({ filename: d.filename, rows: d.row_count }));
+      renderFiles();
+    }
+  } catch {}
+  refreshInFlight = false;
+}
+setInterval(refreshDocuments, 5000);
 
 fileInput.addEventListener('change', async () => {
   for (const file of fileInput.files) {
@@ -194,7 +212,14 @@ fileInput.addEventListener('change', async () => {
   fileInput.value = '';
 });
 
+function docsSignature() {
+  return loadedDocs.map(d => `${d.filename}:${d.rows}`).join('|');
+}
+
+let lastDocSignature = '';
+
 function renderFiles() {
+  lastDocSignature = docsSignature();
   if (!loadedDocs.length) {
     fileListEl.innerHTML = '<div style="color: #5C5E62; font-size: 12px; padding: 8px 12px;">No documents loaded yet.</div>';
     return;
@@ -422,6 +447,7 @@ function switchTab(name) {
   document.getElementById('tab-btn-documents').classList.toggle('active', !chat);
   document.getElementById('tab-chat').classList.toggle('active', chat);
   document.getElementById('tab-documents').classList.toggle('active', !chat);
+  if (!chat) refreshDocuments();
 }
 
 async function sendMessageWithFilter(filterIds) {
